@@ -215,7 +215,7 @@ console.log("성공");
 
         const card=document.createElement("article");
 
-        card.className="car-card reveal";
+        card.className="car-card reveal active";
 
         card.innerHTML=`
 
@@ -244,107 +244,33 @@ console.log("성공");
 
                 </h3>
 
-                    <div class="car-spec">
+                <div class="car-info">
 
-                        <div>
 
-                            <strong>
 
-                                TYPE
+                    <p class="car-year">
+                        ${car.year}년
+                    </p>
 
-                            </strong>
+                    <p class="car-mileage">
+                        ${car.mileage}
+                    </p>
 
-                            <span>
-
-                                ${car.type}
-
-                            </span>
-
-                        </div>
-
-                        <div>
-
-                            <strong>
-
-                                YEAR
-
-                            </strong>
-
-                            <span>
-
-                                ${car.year}
-
-                            </span>
-
-                        </div>
-
-                        <div>
-
-                            <strong>
-
-                                FUEL
-
-                            </strong>
-
-                            <span>
-
-                                ${car.fuel}
-
-                            </span>
-
-                        </div>
-
-                        <div>
-
-                            <strong>
-
-                                KM
-
-                            </strong>
-
-                            <span>
-
-                                ${car.mileage}
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                            <div class="car-action">
-
-                                <div>
-
-                                    <small>
-
-                                        PRICE
-
-                                    </small>
-
-                                    <strong>
-
-                                        ${car.price}
-
-                                    </strong>
-
-                                </div>
-
-                                <button
-
-                                    class="btn btn-primary detail-btn"
-                                    type="button"
-                                    data-car-index="${index}">
-
-                                    자세히 보기 →
-
-                                </button>
-
-                            </div>
+                </div>
 
             </div>
 
         `;
+
+        card.addEventListener("click", () => {
+
+        if(window.carModal){
+
+        window.carModal.open(car);
+
+        }
+
+});
 
         return card;
 
@@ -380,25 +306,25 @@ console.log("성공");
 
         }
 
-        if(this.container){
+        // if(this.container){
 
-            this.container.addEventListener("click",(e)=>{
+        //     this.container.addEventListener("click",(e)=>{
 
-                const button=e.target.closest(".detail-btn");
+        //         const button=e.target.closest(".detail-btn");
 
-                if(!button || !this.container.contains(button)) return;
+        //         if(!button || !this.container.contains(button)) return;
 
-                const car=this.filteredCars[Number(button.dataset.carIndex)];
+        //         const car=this.filteredCars[Number(button.dataset.carIndex)];
 
-                if(car && window.carModal){
+        //         if(car && window.carModal){
 
-                    window.carModal.open(car);
+        //             window.carModal.open(car);
 
-                }
+        //         }
 
-            });
+        //     });
 
-        }
+        // }
 
         this.filterButtons.forEach(btn=>{
 
