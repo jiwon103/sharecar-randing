@@ -46,7 +46,7 @@ button{
 
 .btn-outline{
     border:2px solid rgba(255,255,255,.8);
-    color:#fff;
+    color:#ffffff;
 }
 
 .btn-outline:hover{
@@ -334,7 +334,7 @@ align-items:center;
 
 .car-info{
 
-    padding:30px;
+    padding: 22px;
     display:flex;
 
     flex-direction:column;
@@ -345,13 +345,24 @@ align-items:center;
 
 .car-title{
 
-    font-size:30px;
+    font-size:22px;
 
-    font-weight:800;
+    font-weight:700;
 
     margin-bottom:8px;
+}
+
+.car-year,
+.car-mileage{
+
+    margin-top:8px;
+
+    color:#666;
+
+    font-size:15px;
 
 }
+
 
 .car-spec{
 
