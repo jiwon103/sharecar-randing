@@ -85,6 +85,11 @@ function drawTable(list = cars){
                 </span>
 
             </td>
+            <td>
+
+                ${car.recommend=="TRUE" ? "⭐" : "-"}
+
+            </td>
 
             <td>
 
@@ -192,7 +197,12 @@ form.addEventListener("submit",async(e)=>{
 
     imageurl:document.getElementById("imageurl").value,
 
-    status:document.getElementById("status").value
+    status:document.getElementById("status").value,
+    
+    
+    recommend: document.getElementById("recommend").checked
+    ? "TRUE"
+    : "FALSE"
 
     };
 
@@ -327,6 +337,8 @@ document.addEventListener("click", function (e) {
     document.getElementById("price").value = car.price;
     document.getElementById("imageurl").value = car.imageurl;
     document.getElementById("status").value = car.status;
+    document.getElementById("recommend").checked =
+    String(car.recommend).toUpperCase() === "TRUE";
 
     openDrawer();
 
