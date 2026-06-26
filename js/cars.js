@@ -7,8 +7,11 @@ class ShareCar {
 
     constructor() {
 
-                    this.csvUrl =
-                    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRou7lOLzRsClUxJ22uKZgtxxtiZTUrIvgvrNTkTMQYkR5DwAOET-UYsusXd-C_alVh7vHsOwrqWLEW/pub?output=csv";
+
+                    this.currentPage = 0;
+
+                    this.pageSize = 10;
+                    this.totalPages = 1;
 
         this.cars = [];
 
@@ -72,60 +75,34 @@ class ShareCar {
 
     }
 
-    async loadCars(){
+                    async loadCars(){
 
-            
+                        const result = await getCars();
 
+                        this.cars = result.map(car => ({
 
-        return new Promise((resolve,reject)=>{
+                            image: car.imageurl,
 
-            Papa.parse(this.csvUrl,{
+                            model: car.model,
 
-                download:true,
+                            type: car.type,
 
-                header:true,
+                            year: car.year,
 
-                skipEmptyLines:true,
+                            color: car.color,
 
-                complete:(result)=>{
+                            fuel: car.fuel,
 
-console.log("성공");
-    console.log(result);
-    console.log(result.data);
+                            mileage: car.mileage,
 
-                    this.cars=result.data.map(car=>({
+                            price: car.price,
 
-                        image:car.imageurl,
+                            status: car.status || "판매중"
 
-                        model:car.model,
+                        }));
 
-                        type:car.type,
+                    }
 
-                        year:car.year,
-
-                        color:car.color,
-
-                        fuel:car.fuel,
-
-                        mileage:car.mileage,
-
-                        price:car.price,
-
-                        status:car.status || "대여가능"
-
-                    }));
-
-                    resolve();
-
-                },
-
-                error:reject
-
-            });
-
-        });
-
-    }
 
     render(){
 
@@ -151,19 +128,75 @@ console.log("성공");
 
         this.setStatus();
 
-        const fragment=document.createDocumentFragment();
+                            const fragment = document.createDocumentFragment();
 
-        this.filteredCars.forEach((car,index)=>{
+                            this.totalPages = Math.ceil(
+                                this.filteredCars.length / this.pageSize
+                            );
+                            // 현재 페이지 계산
+                            const start = this.currentPage * this.pageSize;
+                            const end = start + this.pageSize;
 
-            fragment.appendChild(
-                this.createCard(car,index)
-            );
+                            // 현재 페이지에 표시할 차량 10대만 가져오기
+                            const pageCars = this.filteredCars.slice(start, end);
 
-        });
+                            // 10대만 화면에 출력
+                            pageCars.forEach((car, index) => {
 
-        this.container.appendChild(fragment);
+                                fragment.appendChild(
+                                    this.createCard(car, start + index)
+                                );
 
+                            });
+
+                            this.container.appendChild(fragment);
+                                this.renderPagination();
     }
+                            renderPagination() {
+
+                                const indicator = document.querySelector(".page-indicator");
+
+                                if (!indicator) return;
+
+                                indicator.innerHTML = "";
+
+                                for (let i = 0; i < this.totalPages; i++) {
+
+                                    const dot = document.createElement("span");
+
+                                    dot.className = "page-dot";
+
+                                    if (i === this.currentPage) {
+                                        dot.classList.add("active");
+                                    }
+
+                                    dot.addEventListener("click", () => {
+
+                                        this.currentPage = i;
+
+                                        this.render();
+
+                                        window.scrollTo({
+                                            top: document.querySelector("#cars").offsetTop - 120,
+                                            behavior: "smooth"
+                                        });
+
+                                    });
+
+                                    indicator.appendChild(dot);
+
+                                }
+                                const prevBtn = document.querySelector(".page-btn.prev");
+const nextBtn = document.querySelector(".page-btn.next");
+
+if (prevBtn)
+    prevBtn.disabled = this.currentPage === 0;
+
+if (nextBtn)
+    nextBtn.disabled = this.currentPage === this.totalPages - 1;
+
+                            }
+
 
     updateCount(){
 
@@ -222,7 +255,7 @@ console.log("성공");
             <div class="car-thumb">
 
                 <img
-                    src="${this.convertDrive(car.image)}"
+                    src="${car.image}"
                     alt="${car.model}"
                     loading="lazy"
                     decoding="async"
@@ -248,12 +281,10 @@ console.log("성공");
 
 
 
-                    <p class="car-year">
-                        ${car.year}년
-                    </p>
+                    <p class="car-summary">
 
-                    <p class="car-mileage">
-                        ${car.mileage}
+                        ${car.year}년 · ${car.mileage}
+
                     </p>
 
                 </div>
@@ -275,25 +306,19 @@ console.log("성공");
         return card;
 
     }
-        convertDrive(url){
+convertDrive(url) {
 
-        if(!url) return "image/car_kakao-001.png";
+    
+    if (!url) return "";
 
-        if(url.includes("drive.google.com")){
+    const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
 
-            const match=url.match(/[-\\w]{25,}/);
-
-            if(match){
-
-                return `https://lh3.googleusercontent.com/d/${match[0]}`;
-
-            }
-
-        }
-
-        return url;
-
+    if (match) {
+        return `https://drive.google.com/uc?export=view&id=${match[1]}`;
     }
+
+    return url;
+}
     bindEvents(){
 
         if(this.searchInput){
@@ -305,6 +330,40 @@ console.log("성공");
             });
 
         }
+                    const prevBtn = document.querySelector(".page-btn.prev");
+                        const nextBtn = document.querySelector(".page-btn.next");
+
+                        if (prevBtn) {
+
+                            prevBtn.addEventListener("click", () => {
+
+                                if (this.currentPage > 0) {
+
+                                    this.currentPage--;
+
+                                    this.render();
+
+                                }
+
+                            });
+
+                        }
+
+                        if (nextBtn) {
+
+                            nextBtn.addEventListener("click", () => {
+
+                                if (this.currentPage < this.totalPages - 1) {
+
+                                    this.currentPage++;
+
+                                    this.render();
+
+                                }
+
+                            });
+
+                        }
 
         // if(this.container){
 

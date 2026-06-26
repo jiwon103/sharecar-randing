@@ -25,6 +25,14 @@ class CarModal {
 
         this.price=document.querySelector("#modal-price");
 
+        const status = document.querySelector("#modal-status");
+
+        if(status){
+
+        status.textContent = car.status;
+
+        }
+        
         this.closeBtn=document.querySelector(".modal-close");
 
         this.bind();

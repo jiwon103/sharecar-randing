@@ -72,7 +72,7 @@
             <ul>
 
                 <li><a href="#cars">차량</a></li>
-                <li><a href="#why">서비스</a></li>
+                <li><a href="#why">WHY SHARE CAR?</a></li>
                 <li><a href="#event">이벤트</a></li>
                 <li><a href="#contact">문의</a></li>
 
@@ -98,8 +98,63 @@ aria-expanded="false">
 </header>
 
 <main>
+<div class="hero-wrapper">    <section class="hero">
 
-<section class="hero" aria-labelledby="hero-title">
+    <!-- LEFT : VIDEO -->
+    <div class="hero-video">
+
+        <video
+            id="heroVideo"
+            autoplay
+            muted
+            playsinline
+            preload="auto">
+
+            <source src="assets/video/hero1.mp4" type="video/mp4">
+
+        </video>
+
+        <div class="hero-gradient"></div>
+
+    </div>
+
+
+    <!-- RIGHT : CONTENT -->
+
+    <div class="hero-content">
+
+        <span class="hero-subtitle">
+            PREMIUM USED CARS
+        </span>
+
+        <h1>
+            가장 신뢰할 수 있는<br>
+            프리미엄 쉐어카
+        </h1>
+
+        <p>
+            수입차부터 국산차까지<br>
+            엄선된 차량을 가장 합리적인 가격으로 제공합니다.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#cars-section" class="btn-primary">
+                차량 둘러보기
+            </a>
+
+            <a href="#contact-section" class="btn-secondary">
+                상담하기 →
+            </a>
+
+        </div>
+
+    </div>
+
+</section></div>
+
+
+<!-- <section class="hero" aria-labelledby="hero-title">
 
     <div class="hero-slider" aria-hidden="true">
 
@@ -177,7 +232,7 @@ aria-expanded="false">
 
     </div>
 
-</section>
+</section> -->
 
 
 <section id="cars" class="cars-section">
@@ -294,12 +349,25 @@ aria-expanded="false">
         role="status"
         aria-live="polite"
         hidden>
-
+        
         <strong></strong>
 
         <p></p>
 
     </div>
+    <div class="car-pagination">
+
+                <button class="page-btn prev">
+                    ←
+                </button>
+                <div class="page-indicator">
+                    <!-- JS에서 생성 -->
+                </div>
+                <button class="page-btn next">
+                    →
+                </button>
+
+            </div>
 
     <!-- ========================= -->
 
@@ -317,191 +385,6 @@ aria-expanded="false">
 </section>
 
 <!-- ======================================================= -->
-
-
-
-<section id="why" class="why">
-
-    <div class="container why-grid">
-
-        <div class="why-left">
-
-            <span class="section-label">
-                WHY SHARECAR
-            </span>
-
-            <h2>
-                믿을 수 있는 차량을<br>
-                빠르고 편리하게
-            </h2>
-
-            <p>
-                실시간으로 업데이트되는 다양한 차량을
-                빠르게 확인하고 상담까지 한번에 진행할 수 있습니다.
-
-                SHARECAR는 신뢰할 수 있는 차량과
-                간편한 이용 절차를 제공합니다.
-            </p>
-            <ul class="why-list">
-
-                <li>✔ 실시간 차량 업데이트</li>
-
-                <li>✔ 프리미엄 차량 보유</li>
-
-                <li>✔ 빠른 상담 진행</li>
-
-                <li>✔ 간편한 계약 절차</li>
-
-            </ul>
-
-        </div>
-
-                <div class="why-right">
-
-                    <img
-                        src="image/banner1.jpg"
-                        alt="WHY SHARECAR">
-
-                </div>
-
-    </div>
-
-</section>
-
-<!-- PART2부터 차량목록 시작 -->
-<!-- ===========================================================
-   SHARECAR V2
-   INDEX PART 2
-   차량목록 + 서비스
-============================================================ -->
-
-
-
-<section class="service-section">
-
-    <div class="section-title">
-
-        <span class="section-label">
-
-            SERVICE
-
-        </span>
-
-        <h2>
-
-            SHARECAR 서비스
-
-        </h2>
-
-        <p>
-
-            빠르고 간편한 차량 이용을 위한
-            프리미엄 서비스
-
-        </p>
-
-    </div>
-
-    <div class="service-grid">
-
-        <article class="service-card">
-
-            <div class="icon">
-
-                🚗
-
-            </div>
-
-            <h3>
-
-                실시간 차량조회
-
-            </h3>
-
-            <p>
-
-                실시간으로 업데이트되는
-                차량을 확인할 수 있습니다.
-
-            </p>
-
-        </article>
-
-        <article class="service-card">
-
-            <div class="icon">
-
-                💬
-
-            </div>
-
-            <h3>
-
-                빠른 상담
-
-            </h3>
-
-            <p>
-
-                오픈카톡과 전화상담으로
-                빠르게 상담이 가능합니다.
-
-            </p>
-
-        </article>
-
-        <article class="service-card">
-
-            <div class="icon">
-
-                📄
-
-            </div>
-
-            <h3>
-
-                간편 계약
-
-            </h3>
-
-            <p>
-
-                복잡한 절차 없이
-                빠르게 계약을 진행합니다.
-
-            </p>
-
-        </article>
-
-        <article class="service-card">
-
-            <div class="icon">
-
-                ⭐
-
-            </div>
-
-            <h3>
-
-                Premium Service
-
-            </h3>
-
-            <p>
-
-                믿을 수 있는 차량만
-                선별하여 제공합니다.
-
-            </p>
-
-        </article>
-
-    </div>
-
-</section>
-
-<!-- ============================= -->
-<!-- PART 3부터 Video 시작 -->
 <!-- ===========================================================
 VIDEO SECTION
 =========================================================== -->
@@ -538,7 +421,7 @@ VIDEO SECTION
             <button
                 class="video-btn active"
                 type="button"
-                data-media-src="image/video1.mp4"
+                data-media-src="assets/video/video1.mp4"
                 data-media-type="video"
                 aria-pressed="true">
 
@@ -549,7 +432,7 @@ VIDEO SECTION
             <button
                 class="video-btn"
                 type="button"
-                data-media-src="image/video2.mp4"
+                data-media-src="assets/video/video2.mp4"
                 data-media-type="video"
                 aria-pressed="false">
 
@@ -560,7 +443,7 @@ VIDEO SECTION
             <button
                 class="video-btn"
                 type="button"
-                data-media-src="image/video3.mp4"
+                data-media-src="assets/video/video3.mp4"
                 data-media-type="video"
                 aria-pressed="false">
 
@@ -581,7 +464,7 @@ VIDEO SECTION
                 class="media-layer active">
 
                 <video
-                    src="image/video1.mp4"
+                    src="assets/video/video1.mp4"
                     autoplay
                     loop
                     muted
@@ -634,7 +517,7 @@ class="event-section">
 
             <div class="event-image placeholder">
 
-                EVENT 01
+                <img src="assets/image/event1.png" alt="">
 
             </div>
 
@@ -642,14 +525,41 @@ class="event-section">
 
                 <h3>
 
-                    이벤트 제목
+                    이 달의 특가 차량
 
                 </h3>
 
                 <p>
 
-                    이벤트 배너가
-                    들어갈 영역입니다.
+                    6월의 특가차량을<br>
+                    소개합니다
+                    
+
+                </p>
+
+            </div>
+
+        </article>
+
+        <article class="event-card">
+
+            <div class="event-image placeholder">
+                    <img src="assets/image/event2.png" alt="">
+
+
+            </div>
+
+            <div class="event-content">
+
+                <h3>
+
+                    이 달 생일자를 위한<br>주유 만땅 이벤트
+
+                </h3>
+
+                <p>
+
+                    6월 생일자라면 출고시 주유 100%로 출고됩니다.
 
                 </p>
 
@@ -661,7 +571,7 @@ class="event-section">
 
             <div class="event-image placeholder">
 
-                EVENT 02
+                <img src="assets/image/event3.png" alt="">
 
             </div>
 
@@ -669,41 +579,14 @@ class="event-section">
 
                 <h3>
 
-                    이벤트 제목
+                    당일 상담 후 즉시 출고
 
                 </h3>
 
                 <p>
 
-                    이벤트 배너가
-                    들어갈 영역입니다.
-
-                </p>
-
-            </div>
-
-        </article>
-
-        <article class="event-card">
-
-            <div class="event-image placeholder">
-
-                EVENT 03
-
-            </div>
-
-            <div class="event-content">
-
-                <h3>
-
-                    이벤트 제목
-
-                </h3>
-
-                <p>
-
-                    이벤트 배너가
-                    들어갈 영역입니다.
+                    상담 당일 바로 차량 이용 가능합니다
+                    
 
                 </p>
 
@@ -715,11 +598,203 @@ class="event-section">
 
 </section>
 
+
+
+
+
+<section id="why" class="why">
+
+    <div class="container why-grid">
+
+        <div class="why-left">
+
+            <span class="section-label">
+                WHY SHARECAR
+            </span>
+
+            <h2>
+                믿을 수 있는 차량을<br>
+                빠르고 편리하게
+            </h2>
+
+            <p>
+                실시간으로 업데이트되는 다양한 차량을
+                빠르게 확인하고 상담까지 한번에 진행할 수 있습니다.
+
+                SHARECAR는 신뢰할 수 있는 차량과
+                간편한 이용 절차를 제공합니다.
+            </p>
+            <ul class="why-list">
+
+                <li>✔ 신용 무관 당일 진행</li>
+
+                <li>✔ 프리미엄 차량 보유</li>
+
+                <li>✔ 빠른 상담 진행</li>
+
+                <li>✔ 간편한 계약 절차</li>
+
+            </ul>
+
+        </div>
+
+                <div class="why-right">
+
+                    <img
+                        src="assets/image/banner2.png"
+                        alt="WHY SHARECAR">
+
+                </div>
+
+    </div>
+
+</section>
+
+<!-- PART2부터 차량목록 시작 -->
+
+
+
+<!-- ===========================================================
+   SHARECAR V2
+   INDEX PART 2
+   차량목록 + 서비스
+============================================================ -->
+
+
+
+<section class="service-section">
+
+    <div class="section-title">
+
+        <span class="section-label">
+
+            SERVICE
+
+        </span>
+
+        <h2>
+
+            SHARECAR 서비스
+
+        </h2>
+
+        <p>
+
+            빠르고 간편한 차량 이용을 위한
+            프리미엄 서비스
+
+        </p>
+
+    </div>
+
+    <div class="service-grid">
+
+        <article class="service-card">
+
+            <div class="icon">
+
+                🚗
+
+            </div>
+
+            <h3>
+
+                실시간 차량조회
+
+            </h3>
+
+            <p>
+
+                실시간으로 업데이트되는<br>
+                차량을 확인할 수 있습니다.
+
+            </p>
+
+        </article>
+
+        <article class="service-card">
+
+            <div class="icon">
+
+                💬
+
+            </div>
+
+            <h3>
+
+                빠른 상담
+
+            </h3>
+
+            <p>
+
+                오픈카톡과 전화상담으로<br>
+                빠르게 상담이 가능합니다.
+
+            </p>
+
+        </article>
+
+        <article class="service-card">
+
+            <div class="icon">
+
+                📄
+
+            </div>
+
+            <h3>
+
+                간편 계약
+
+            </h3>
+
+            <p>
+
+                복잡한 절차 없이<br>
+                빠르게 계약을 진행합니다.
+
+            </p>
+
+        </article>
+
+        <article class="service-card">
+
+            <div class="icon">
+
+                ⭐
+
+            </div>
+
+            <h3>
+
+                Premium Service
+
+            </h3>
+
+            <p>
+
+                믿을 수 있는 차량만<br>
+                선별하여 제공합니다.
+
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+<!-- ============================= -->
+
+
+
+
 <!-- ===========================================================
 PROCESS
 =========================================================== -->
 
-<section
+<!-- <section
 id="process"
 class="process-section">
 
@@ -841,7 +916,91 @@ class="process-section">
 
     </div>
 
+</section> -->
+
+<section class="reviews">
+
+    <div class="section-title">
+        <p>REAL CUSTOMER REVIEW</p>
+        <h2>실제 이용 후기</h2>
+    </div>
+
+    <div class="review-slider">
+
+        <div class="review-track">
+
+            <!-- 첫번째 세트 -->
+
+            <div class="review-card">
+                ⭐⭐⭐⭐⭐
+                <p>차량 상태가 정말 좋았고 상담도 친절했습니다.</p>
+                <span>김○○ 고객</span>
+            </div>
+
+            <div class="review-card">
+                ⭐⭐⭐⭐⭐
+                <p>사진 그대로라 믿고 계약했습니다.</p>
+                <span>이○○ 고객</span>
+            </div>
+
+            <div class="review-card">
+                ⭐⭐⭐⭐⭐
+                <p>당일 출고가 가능해서 정말 만족했습니다.</p>
+                <span>박○○ 고객</span>
+            </div>
+
+            <div class="review-card">
+                ⭐⭐⭐⭐⭐
+                <p>허위매물 없이 원하는 차량을 바로 찾았습니다.</p>
+                <span>최○○ 고객</span>
+            </div>
+
+            <div class="review-card">
+                ⭐⭐⭐⭐⭐
+                <p>차량 설명이 상세해서 신뢰가 갔습니다.</p>
+                <span>정○○ 고객</span>
+            </div>
+
+            <div class="review-card">
+                ⭐⭐⭐⭐⭐
+                <p>계약 절차가 생각보다 훨씬 간단했습니다.</p>
+                <span>윤○○ 고객</span>
+            </div>
+
+            <div class="review-card">
+                ⭐⭐⭐⭐⭐
+                <p>첫 중고차 구매였는데 안심하고 진행했습니다.</p>
+                <span>한○○ 고객</span>
+            </div>
+
+            <div class="review-card">
+                ⭐⭐⭐⭐⭐
+                <p>차량 컨디션이 기대 이상이었습니다.</p>
+                <span>서○○ 고객</span>
+            </div>
+
+            <div class="review-card">
+                ⭐⭐⭐⭐⭐
+                <p>가격도 만족스럽고 차량도 만족합니다.</p>
+                <span>임○○ 고객</span>
+            </div>
+
+            <div class="review-card">
+                ⭐⭐⭐⭐⭐
+                <p>다음 차량도 쉐어카에서 구매하려고 합니다.</p>
+                <span>오○○ 고객</span>
+            </div>
+
+            <!-- 동일한 카드 한 번 더 복붙 -->
+
+        </div>
+
+    </div>
+
 </section>
+
+
+
 
 <!-- PART4
 FAQ
@@ -1205,6 +1364,8 @@ SCRIPT
 
 <script src="js/banner.js"></script>
 
+<script src="admin/js/api.js"></script>
+
 <script src="js/cars.js"></script>
 
 <script src="js/modal.js"></script>
@@ -1214,6 +1375,8 @@ SCRIPT
 <script src="js/scroll.js"></script>
 
 <script src="js/app.js"></script>
+
+<script src="js/main.js"></script>
 
 </body>
 
