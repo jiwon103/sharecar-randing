@@ -52,6 +52,8 @@ class ShareCar {
             this.filteredCars = [...this.cars];
 
             this.render();
+            
+            this.renderFeatured();
 
         }catch(error){
 
@@ -97,7 +99,9 @@ class ShareCar {
 
                             price: car.price,
 
-                            status: car.status || "판매중"
+                            status: car.status || "판매중",
+
+                            recommend: car.recommend
 
                         }));
 
@@ -152,6 +156,71 @@ class ShareCar {
                             this.container.appendChild(fragment);
                                 this.renderPagination();
     }
+    /******* */
+    renderFeatured(){
+
+console.log("renderFeatured 실행");
+
+    const container=document.querySelector("#featured-list");
+
+    if(!container) return;
+
+    container.innerHTML="";
+
+    const cars=this.cars
+        .filter(car=>String(car.recommend).toUpperCase()=="TRUE")
+        .slice(0,3);
+
+    cars.forEach((car,index)=>{
+
+        container.innerHTML+=`
+
+        <article class="featured-card">
+
+            <div class="featured-number">
+
+                ${String(index+1).padStart(2,"0")}
+
+            </div>
+
+            <img src="${car.image}" alt="${car.model}">
+
+            <div class="featured-content">
+
+                <h3>${car.model}</h3>
+
+                <p>
+
+                    쉐어카 추천 차량
+
+                </p>
+
+                <ul>
+
+                    <li>${car.type}</li>
+
+                    <li>${car.fuel}</li>
+
+                    <li>${car.year}년</li>
+
+                </ul>
+
+                <a href="#contact">
+
+                    차량 보기 →
+
+                </a>
+
+            </div>
+
+        </article>
+
+        `;
+
+    });
+
+}
+/**************************** */
                             renderPagination() {
 
                                 const indicator = document.querySelector(".page-indicator");
