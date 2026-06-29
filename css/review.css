@@ -5,7 +5,7 @@
 .review-section{
     width:100%;
     background:#0b0b0b;
-    padding:120px 0;
+    padding: 0;
     overflow:hidden;
     background:
         linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
@@ -33,18 +33,19 @@
     color:#fff;
     font-size:42px;
     font-weight:700;
-    margin-bottom:15px;
+    margin-bottom:20px;
 }
 
 .review-section h5{
     color: #ff6b00;
     font-size: 30px;
+    margin-bottom: 30px;
 }
 
 .section-title::after{
 
     display:block;
-    margin-top:18px;
+    margin-top:10px;
     font-size:16px;
     color:#3a3a3a;
     font-weight:400;
@@ -54,13 +55,13 @@
 .review-slider{
     width:100%;
     overflow:hidden;
-    margin-top:70px;
+    margin-top: 50px;
     position: relative;
 }
 
 .review-track{
     display:flex;
-    gap:45px;
+    gap:32px;
     padding: 20px 12px;
     transition:transform .7s cubic-bezier(.22,.61,.36,1);
     will-change:transform;
@@ -92,8 +93,10 @@
 .review-card{
 
     
-    flex:0 0 295px;
+    flex:0 0 calc((100% - 64px) / 3);
 
+    max-width:460px;
+    
     background:rgba(255,255,255,.04);
     border:1px solid rgba(255,255,255,.08);
 
@@ -101,17 +104,20 @@
 
     border-radius:18px;
 
-    padding:22px;
+    padding: 18px;
 
 
     transform:scale(.9);
 
     opacity:1;
 
-    transition:
-        transform .45s,
-        opacity .45s,
-        box-shadow .45s;
+        transition:
+
+        transform .45s ease,
+
+        opacity .45s ease,
+
+        box-shadow .45s ease;
 
     min-height:210px;
 
@@ -121,16 +127,13 @@
 
 }
 
-.review-card.active{
+.review-card .active{
 
-    transform:scale(1);
+transform:scale(1.06);
 
-    opacity:1;
+box-shadow:0 30px 60px rgba(0,0,0,.18);
 
-    border-color:rgba(255,255,255,.18);
-
-    box-shadow:
-        0 20px 45px rgba(0,0,0,.45);
+z-index:10;
 
 }
 
@@ -172,9 +175,9 @@
 
     line-height:1.8;
 
-    font-size:15px;
+    font-size: 30px;
 
-    min-height:95px;
+    min-height:120px;
 
 }
 
@@ -218,7 +221,7 @@
 
     color:#9e9e9e;
 
-    font-size:14px;
+    font-size:20px;
 
     font-weight:400;
 

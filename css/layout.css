@@ -242,7 +242,7 @@ body{
 
     overflow:hidden;
 
-    border-radius: 0 36px 36px 0;
+    /* border-radius: 0 36px 36px 0; */
 
 }
 .hero-video::after{
@@ -1340,39 +1340,56 @@ footer{
 /* ==========================
    Floating Menu
 ========================== */
+/* ===============================
+   Floating Menu
+================================= */
 
 .floating-menu{
 
     position:fixed;
 
-    right:25px;
+    right:28px;
 
-    bottom:25px;
+    bottom:32px;
 
     display:flex;
 
     flex-direction:column;
 
-    gap:14px;
+    gap:18px;
 
     z-index:9999;
-    
+
+    transition: .3s;
 }
 
-.floating-menu a{
-    background-color: #fff;
+.float-btn{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:92px;
+
+    text-decoration:none;
+
+    transition:.3s ease;
+
 }
 
+.float-icon{
 
-.floating-btn{
+    width:74px;
 
-    width:72px;
-
-    height:72px;
+    height:74px;
 
     border-radius:50%;
 
-    background:#fff;
+    background:#111;
 
     display:flex;
 
@@ -1380,66 +1397,65 @@ footer{
 
     align-items:center;
 
-    box-shadow:0 8px 20px rgba(0,0,0,.18);
+    box-shadow:0 12px 30px rgba(0,0,0,.28);
 
-    transition:.3s;
-
-    overflow:hidden;
-}
-
-.floating-btn:hover{
-
-    transform:translateY(-4px);
-
-    box-shadow:0 14px 28px rgba(0,0,0,.28);
+    transition:.3s ease;
 
 }
 
-.floating-btn span{
+.float-icon img{
 
-    display:none;
+    width:100px;
 
-}
-.floating-btn img{
-
-    width:50px;
-
-    height:50px;
+    height:100px;
 
     object-fit:contain;
 
-    display:block;
+}
 
+.float-btn span{
+
+    margin-top:8px;
+
+    color:#fff;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    letter-spacing:-0.3px;
+
+    text-align:center;
+
+    transition: color .3s ease;
+}
+
+.floating-menu.light-mode .float-btn span{
+
+    color:#111 !important;
 
 }
 
 
-.phone{
+.float-btn:hover{
 
-    background:#111;
-
-}
-
-.kakao{
-
-    background:#FEE500;
-
-    color:#111;
+    transform:translateY(-4px);
 
 }
 
-.blog{
+.float-btn:hover .float-icon{
 
-    background:#03C75A;
+    background:#ff7a00;
 
-}
-
-.cafe{
-
-    background:#2DB400;
+    box-shadow:0 16px 36px rgba(255,122,0,.35);
 
 }
 
+.float-btn:active{
+
+    transform:scale(.95);
+
+}
 /*==========================
 Featured
 ==========================*/
@@ -1474,6 +1490,7 @@ Featured
     font-size: 50px;
 }
 
+
 .featured-section .section-title h2{
 
     font-size:56px;
@@ -1489,6 +1506,12 @@ Featured
     font-size: 30px;
 
 }
+
+.featured-section .section-title span a{
+    color: #db5600;
+    font-weight: 800;
+}
+
 .featured-grid{
 
     width:min(1400px,92%);
