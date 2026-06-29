@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/animation.css">
 <link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/review.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,7 +75,7 @@
                 <li><a href="#cars">차량</a></li>
                 <li><a href="#why">WHY SHARE CAR?</a></li>
                 <li><a href="#event">이벤트</a></li>
-                <li><a href=".featured">추천차량</a></li>
+                <li><a href="#featured">추천차량</a></li>
 
             </ul>
 
@@ -385,6 +386,28 @@ aria-expanded="false">
 </section>
 
 <!-- ======================================================= -->
+
+<section id="featured" class="featured-section">
+
+    <div class="section-title">
+
+        <p>TODAY'S PICK</p>
+
+        <h2>오늘의 추천 차량</h2>
+
+        <span>
+            쉐어카가 추천하는 인기 차량을 만나보세요.
+        </span>
+
+    </div>
+
+
+    <div id="featured-list" class="featured-grid">
+
+    </div>
+
+</section>
+
 <!-- ===========================================================
 VIDEO SECTION
 =========================================================== -->
@@ -1078,87 +1101,161 @@ class="process-section">
 
 </section> -->
 
-<section class="reviews">
+<!-- <section class="reviews">
 
-    <div class="section-title">
-        <p>REAL CUSTOMER REVIEW</p>
-        <h2>실제 이용 후기</h2>
-    </div>
+    <div class="reviews-bg"></div>
 
-    <div class="review-slider">
+    <div class="reviews-overlay"></div>
 
-        <div class="review-track">
+    <div class="reviews-header">
 
-            <!-- 첫번째 세트 -->
+        <span class="reviews-label">
+            REAL CUSTOMER REVIEW
+        </span>
 
-            <div class="review-card">
-                ⭐⭐⭐⭐⭐
-                <p>차량 상태가 정말 좋았고 상담도 친절했습니다.</p>
-                <span>김○○ 고객</span>
-            </div>
+        <h2>
 
-            <div class="review-card">
-                ⭐⭐⭐⭐⭐
-                <p>사진 그대로라 믿고 계약했습니다.</p>
-                <span>이○○ 고객</span>
-            </div>
+            실제 이용 후기
 
-            <div class="review-card">
-                ⭐⭐⭐⭐⭐
-                <p>당일 출고가 가능해서 정말 만족했습니다.</p>
-                <span>박○○ 고객</span>
-            </div>
+        </h2>
 
-            <div class="review-card">
-                ⭐⭐⭐⭐⭐
-                <p>허위매물 없이 원하는 차량을 바로 찾았습니다.</p>
-                <span>최○○ 고객</span>
-            </div>
+        <p>
 
-            <div class="review-card">
-                ⭐⭐⭐⭐⭐
-                <p>차량 설명이 상세해서 신뢰가 갔습니다.</p>
-                <span>정○○ 고객</span>
-            </div>
+            쉐어카를 선택한 고객들의
+            진솔한 후기를 만나보세요.
 
-            <div class="review-card">
-                ⭐⭐⭐⭐⭐
-                <p>계약 절차가 생각보다 훨씬 간단했습니다.</p>
-                <span>윤○○ 고객</span>
-            </div>
+        </p>
 
-            <div class="review-card">
-                ⭐⭐⭐⭐⭐
-                <p>첫 중고차 구매였는데 안심하고 진행했습니다.</p>
-                <span>한○○ 고객</span>
-            </div>
+        <div class="reviews-count">
 
-            <div class="review-card">
-                ⭐⭐⭐⭐⭐
-                <p>차량 컨디션이 기대 이상이었습니다.</p>
-                <span>서○○ 고객</span>
-            </div>
+            <span>👥</span>
 
-            <div class="review-card">
-                ⭐⭐⭐⭐⭐
-                <p>가격도 만족스럽고 차량도 만족합니다.</p>
-                <span>임○○ 고객</span>
-            </div>
+            <strong>2,300+</strong>
 
-            <div class="review-card">
-                ⭐⭐⭐⭐⭐
-                <p>다음 차량도 쉐어카에서 구매하려고 합니다.</p>
-                <span>오○○ 고객</span>
-            </div>
-
-            <!-- 동일한 카드 한 번 더 복붙 -->
+            <small>CUSTOMER REVIEWS</small>
 
         </div>
 
     </div>
 
-</section>
 
+    <div class="review-slider">
+
+        <button class="review-arrow prev">
+
+            ←
+
+        </button>
+
+
+        <div class="review-track">
+
+            <article class="review-card active">
+
+                <div class="review-stars">
+
+                    ★★★★★
+
+                </div>
+
+                <div class="quote-left">
+
+                    ❝
+
+                </div>
+
+                <p class="review-text">
+
+                    사진보다 차량 상태가 훨씬 좋았습니다.<br>
+
+                    상담도 정말 친절했고
+
+                    다음에도 이용하고 싶습니다.
+
+                </p>
+
+                <div class="quote-right">
+
+                    ❞
+
+                </div>
+
+                <div class="review-footer">
+
+                    <div class="review-user">
+
+                        <div class="avatar">
+
+                            👤
+
+                        </div>
+
+                        <div>
+
+                            <strong>
+
+                                김○○ 고객
+
+                            </strong>
+
+                            <span>
+
+                                2026.06.20 이용
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="verified">
+
+                        ✓ Verified Review
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <button class="review-arrow next">
+
+            →
+
+        </button>
+
+    </div>
+
+    <div class="review-dots">
+
+        <span class="active"></span>
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+    </div>
+
+</section> -->
+
+<section class="review-section">
+
+    <div class="review-title">
+        실제 이용 후기
+    </div>
+
+    <div class="review-slider">
+
+        <div class="review-track"></div>
+
+    </div>
+
+</section>
 
 
 <!-- ===========================
@@ -1309,26 +1406,6 @@ TODAY'S PICK
 </section> -->
 
 
-<section id="featured" class="featured-section">
-
-    <div class="section-title">
-
-        <p>TODAY'S PICK</p>
-
-        <h2>오늘의 추천 차량</h2>
-
-        <span>
-            쉐어카가 추천하는 인기 차량을 만나보세요.
-        </span>
-
-    </div>
-
-
-    <div id="featured-list" class="featured-grid">
-
-    </div>
-
-</section>
 
 
 
@@ -1703,6 +1780,8 @@ SCRIPT
 <script src="js/app.js"></script>
 
 <script src="js/main.js"></script>
+
+<script src="js/review.js"></script>
 
 
 
