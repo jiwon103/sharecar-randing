@@ -289,6 +289,7 @@
             </select>
 
         </label>
+        
 
         <label>
             <label class="form-check">
@@ -308,6 +309,50 @@ type="text"
 id="imageurl">
 
 </label>
+
+
+<div class="form-group">
+
+    <label>차량 구분</label>
+
+    <div class="origin-selector">
+
+        <input
+            type="radio"
+            id="origin-domestic"
+            name="origin"
+            value="국산"
+            checked
+            hidden>
+
+        <label
+            for="origin-domestic"
+            class="origin-card">
+
+            🚗 국산차
+
+        </label>
+
+        <input
+            type="radio"
+            id="origin-import"
+            name="origin"
+            value="수입"
+            hidden>
+
+        <label
+            for="origin-import"
+            class="origin-card">
+
+            🌍 수입차
+
+        </label>
+
+    </div>
+
+</div>
+
+
 <!-- <label>
 
     대표 이미지

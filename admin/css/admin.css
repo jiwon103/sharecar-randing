@@ -757,6 +757,63 @@ td img{
    Responsive
 ========================== */
 
+.origin-selector{
+
+    display:flex;
+
+    gap:14px;
+
+    margin-top:10px;
+
+}
+
+.origin-card{
+
+    flex:1;
+
+    padding:18px;
+
+    border:2px solid #ddd;
+
+    border-radius:16px;
+
+    text-align:center;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    user-select:none;
+
+}
+
+.origin-card:hover{
+
+    border-color:#ff6b00;
+
+    transform:translateY(-2px);
+
+}
+
+input[name="origin"]:checked + .origin-card{
+
+    background:#ff6b00;
+
+    color:#fff;
+
+    border-color:#ff6b00;
+
+    box-shadow:0 10px 25px rgba(255,107,0,.25);
+
+}
+
+/**88***/
+
+
+
+
 @media (max-width:1200px){
 
     .summary{

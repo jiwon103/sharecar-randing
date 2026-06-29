@@ -165,8 +165,17 @@ function closeDrawer(){
 
 }
 
-addBtn.addEventListener("click",openDrawer);
+addBtn.addEventListener("click",()=>{
 
+    editingId = null;
+
+    form.reset();
+
+    document.getElementById("origin-domestic").checked = true;
+
+    openDrawer();
+
+});
 closeBtn.addEventListener("click",closeDrawer);
 
 /* ==========================================
@@ -184,6 +193,10 @@ form.addEventListener("submit",async(e)=>{
     model:document.getElementById("model").value,
 
     type:document.getElementById("type").value,
+
+    origin: document.querySelector(
+        'input[name="origin"]:checked'
+    ).value,
 
     year:document.getElementById("year").value,
 
@@ -339,6 +352,19 @@ document.addEventListener("click", function (e) {
     document.getElementById("status").value = car.status;
     document.getElementById("recommend").checked =
     String(car.recommend).toUpperCase() === "TRUE";
+        const originRadio = document.querySelector(
+            `input[name="origin"][value="${car.origin}"]`
+        );
+
+        if(originRadio){
+
+            originRadio.checked = true;
+
+        }else{
+
+            document.getElementById("origin-domestic").checked = true;
+
+        }
 
     openDrawer();
 
