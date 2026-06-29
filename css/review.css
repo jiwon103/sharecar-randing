@@ -9,7 +9,7 @@
     overflow:hidden;
     background:
         linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-        url("/assets/image/backgroundcar1.png") center/cover no-repeat;
+        url("../assets/image/backgroundcar1.png") center/cover no-repeat;
 }
 
 
