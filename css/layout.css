@@ -1241,7 +1241,7 @@ footer{
 
 
 /*리뷰 카드*/
-.reviews{
+/* .reviews{
 
     padding:140px 0;
 
@@ -1337,23 +1337,10 @@ footer{
 
     font-size:14px;
 
-}
+} */
 
-@keyframes reviewMove{
 
-    from{
 
-        transform:translateX(0);
-
-    }
-
-    to{
-
-        transform:translateX(-50%);
-
-    }
-
-}
 
 /* ==========================
    Floating Menu
