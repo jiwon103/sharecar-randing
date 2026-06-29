@@ -1,3 +1,17 @@
+@font-face {
+    font-family: "EULA_iropke_batang";
+    src: url(../assets/fonts/IropkeBatangM.eot);
+    src: url(../assets/fonts/IropkeBatangM.woff);
+
+    font-weight: 400;
+    font-style: normal;
+}
+p,li,h1,h2,h3,h5,a,div{
+    font-family: "EULA_iropke_batang",serif;
+}
+
+
+
 *,
 *::before,
 *::after{
@@ -14,6 +28,7 @@ body{
     font-family:"Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     line-height:1.5;
 }
+
 
 h1,
 h2,
