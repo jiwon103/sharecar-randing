@@ -1,3 +1,7 @@
+/* ==========================
+HERO VIDEO
+========================== */
+
 const heroVideo = document.getElementById("heroVideo");
 
 const videos = [
@@ -8,26 +12,75 @@ const videos = [
 
 let currentVideo = 0;
 
-heroVideo.addEventListener("ended", () => {
+heroVideo.addEventListener("ended",()=>{
 
-    heroVideo.style.opacity = 0;
+    heroVideo.style.opacity=0;
 
-    setTimeout(() => {
+    setTimeout(()=>{
 
-        currentVideo = (currentVideo + 1) % videos.length;
+        currentVideo=(currentVideo+1)%videos.length;
 
-        heroVideo.src = videos[currentVideo];
+        heroVideo.src=videos[currentVideo];
 
         heroVideo.load();
 
         heroVideo.play();
 
-    }, 400);
+    },400);
 
 });
 
-heroVideo.addEventListener("loadeddata", () => {
+heroVideo.addEventListener("loadeddata",()=>{
 
-    heroVideo.style.opacity = 1;
+    heroVideo.style.opacity=1;
+
+});
+
+
+/* ==========================
+EVENT POPUP
+========================== */
+
+const banner=document.getElementById("event-banner");
+
+const moreBtn=document.querySelector(".event-more");
+
+const eventModal=document.querySelector(".event-modal");
+
+const eventImage=document.getElementById("event-modal-image");
+
+const eventClose=document.querySelector(".event-modal-close");
+
+function openEventPopup(){
+
+    eventImage.src=banner.src;
+
+    eventModal.classList.add("active");
+
+}
+
+banner.addEventListener("click",openEventPopup);
+
+moreBtn.addEventListener("click",(e)=>{
+
+    e.stopPropagation();
+
+    openEventPopup();
+
+});
+
+eventClose.addEventListener("click",()=>{
+
+    eventModal.classList.remove("active");
+
+});
+
+eventModal.addEventListener("click",(e)=>{
+
+    if(e.target===eventModal){
+
+        eventModal.classList.remove("active");
+
+    }
 
 });

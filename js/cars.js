@@ -89,6 +89,8 @@ class ShareCar {
 
                             type: car.type,
 
+                            origin: car.origin,
+
                             year: car.year,
 
                             color: car.color,
@@ -466,7 +468,7 @@ convertDrive(url) {
 
                 btn.classList.add("active");
 
-                this.activeType=btn.textContent.trim();
+                this.activeType = btn.dataset.origin || "전체";
 
                 this.applyFilters(this.searchInput ? this.searchInput.value : "");
 
@@ -501,8 +503,9 @@ convertDrive(url) {
             const matchesKeyword=!normalizedKeyword ||
                 String(car.model || "").toLowerCase().includes(normalizedKeyword);
 
-            const matchesType=this.activeType==="전체" || car.type===this.activeType;
-
+            const matchesType =
+                this.activeType==="전체" ||
+                car.origin===this.activeType;
             return matchesKeyword && matchesType;
 
         });

@@ -39,138 +39,210 @@ const reviews = [
 
 const track = document.querySelector(".review-track");
 
-reviews.forEach(review => {
+function createCard(review){
 
     const card = document.createElement("div");
-    card.className = "review-card";
 
-    card.innerHTML = `
-        <div class="review-star">${"★".repeat(review.star)}</div>
+    card.className="review-card";
+
+    card.innerHTML=`
+        <div class="review-star">
+            ${"★".repeat(review.star)}
+        </div>
 
         <div class="review-text">
             ${review.text}
         </div>
 
         <div class="review-user">
+
             <div>
+
                 ${review.name}
+
                 <span>${review.car}</span>
+
             </div>
+
         </div>
     `;
 
-    track.appendChild(card);
-
-});
-
-// 무한 슬라이드를 위해 복제
-reviews.forEach(review => {
-
-    const card = document.createElement("div");
-    card.className = "review-card";
-
-    card.innerHTML = `
-        <div class="review-star">${"★".repeat(review.star)}</div>
-
-        <div class="review-text">
-            ${review.text}
-        </div>
-
-        <div class="review-user">
-            <div>
-                ${review.name}
-                <span>${review.car}</span>
-            </div>
-        </div>
-    `;
-
-    track.appendChild(card);
-
-});
-
-let current = 0;
-let timer;
-
-function getVisibleCards() {
-
-    if (window.innerWidth <= 768) return 1;
-
-    if (window.innerWidth <= 1024) return 2;
-
-    return 3;
+    return card;
 
 }
 
-function slide() {
+// 앞쪽 복제
+reviews.slice(-3).forEach(r=>{
 
-    const cards = document.querySelectorAll(".review-card");
+    track.appendChild(createCard(r));
 
-    if (!cards.length) return;
+});
 
-    const gap = 30;
+// 원본
 
-    const width = cards[0].offsetWidth + gap;
+reviews.forEach(r=>{
+
+    track.appendChild(createCard(r));
+
+});
+
+// 뒤쪽 복제
+
+reviews.slice(0,3).forEach(r=>{
+
+    track.appendChild(createCard(r));
+
+});
+
+const cards=document.querySelectorAll(".review-card");
+
+let current=3;
+
+let timer;
+
+const gap=45;
+
+track.style.transition=".7s cubic-bezier(.22,.61,.36,1)";
+
+function update(){
+
+    const width=cards[0].offsetWidth+gap;
+
+    track.style.transform=`translateX(-${width*current}px)`;
+
+    cards.forEach(card=>{
+
+        card.classList.remove("active");
+
+    });
+
+    cards[current].classList.add("active");
+
+}
+
+update();
+
+function next(){
 
     current++;
 
-    if (current >= reviews.length) {
+    update();
 
-        track.style.transition = "none";
-        current = 0;
-        track.style.transform = "translateX(0px)";
+}
 
-        requestAnimationFrame(() => {
+function prev(){
 
-            requestAnimationFrame(() => {
+    current--;
 
-                track.style.transition = ".7s ease";
+    update();
 
-            });
+}
+
+track.addEventListener("transitionend",()=>{
+
+    if(current===reviews.length+3){
+
+        track.style.transition="none";
+
+        current=3;
+
+        update();
+
+        requestAnimationFrame(()=>{
+
+            track.style.transition=".7s cubic-bezier(.22,.61,.36,1)";
 
         });
 
-    } else {
+    }
 
-        track.style.transform = `translateX(-${width * current}px)`;
+    if(current===0){
+
+        track.style.transition="none";
+
+        current=reviews.length;
+
+        update();
+
+        requestAnimationFrame(()=>{
+
+            track.style.transition=".7s cubic-bezier(.22,.61,.36,1)";
+
+        });
 
     }
 
-}
+});
 
-function startSlider() {
+function start(){
 
     clearInterval(timer);
 
-    timer = setInterval(slide, 3500);
+    timer=setInterval(next,4500);
 
 }
 
-startSlider();
+start();
 
-track.addEventListener("mouseenter", () => {
+track.addEventListener("mouseenter",()=>{
 
     clearInterval(timer);
 
 });
 
-track.addEventListener("mouseleave", () => {
+track.addEventListener("mouseleave",()=>{
 
-    startSlider();
+    start();
 
 });
 
-window.addEventListener("resize", () => {
+document.querySelector(".review-next").onclick=next;
 
-    current = 0;
+document.querySelector(".review-prev").onclick=prev;
 
-    track.style.transition = "none";
 
-    track.style.transform = "translateX(0px)";
+// ===== 드래그 =====
 
-    requestAnimationFrame(() => {
+let startX=0;
 
-        track.style.transition = ".7s ease";
+let dragging=false;
 
-    });
+track.addEventListener("pointerdown",(e)=>{
+
+    dragging=true;
+
+    startX=e.clientX;
+
+    clearInterval(timer);
+
+});
+
+window.addEventListener("pointerup",(e)=>{
+
+    if(!dragging) return;
+
+    dragging=false;
+
+    const diff=e.clientX-startX;
+
+    if(diff>70){
+
+        prev();
+
+    }
+
+    else if(diff<-70){
+
+        next();
+
+    }
+
+    start();
+
+});
+
+window.addEventListener("resize",()=>{
+
+    update();
 
 });
