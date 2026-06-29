@@ -10,7 +10,7 @@ class ShareCar {
 
                     this.currentPage = 0;
 
-                    this.pageSize = 10;
+                    this.pageSize = 5;
                     this.totalPages = 1;
 
         this.cars = [];
