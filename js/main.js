@@ -84,3 +84,43 @@ eventModal.addEventListener("click",(e)=>{
     }
 
 });
+
+// **///////
+
+const floatingMenu = document.querySelector(".floating-menu");
+const lightSections = document.querySelectorAll(".light-section");
+
+function updateFloatingMenu(){
+
+    const center = window.innerHeight / 2;
+
+    let isLight = false;
+
+    lightSections.forEach(section=>{
+
+        const rect = section.getBoundingClientRect();
+
+        if(rect.top <= center && rect.bottom >= center){
+
+            isLight = true;
+
+        }
+
+    });
+
+    if(isLight){
+
+        floatingMenu.classList.add("light-mode");
+
+    }else{
+
+        floatingMenu.classList.remove("light-mode");
+
+    }
+
+}
+
+window.addEventListener("scroll", updateFloatingMenu);
+window.addEventListener("resize", updateFloatingMenu);
+
+updateFloatingMenu();

@@ -1,3 +1,7 @@
+/* ===========================================
+   REVIEW DATA
+=========================================== */
+
 const reviews = [
     {
         name: "김○○",
@@ -37,15 +41,20 @@ const reviews = [
     }
 ];
 
+
+/* ===========================================
+   CREATE CARD
+=========================================== */
+
 const track = document.querySelector(".review-track");
 
 function createCard(review){
 
     const card = document.createElement("div");
 
-    card.className="review-card";
+    card.className = "review-card";
 
-    card.innerHTML=`
+    card.innerHTML = `
         <div class="review-star">
             ${"★".repeat(review.star)}
         </div>
@@ -55,15 +64,10 @@ function createCard(review){
         </div>
 
         <div class="review-user">
-
             <div>
-
                 ${review.name}
-
                 <span>${review.car}</span>
-
             </div>
-
         </div>
     `;
 
@@ -71,58 +75,96 @@ function createCard(review){
 
 }
 
-// 앞쪽 복제
-reviews.slice(-3).forEach(r=>{
 
-    track.appendChild(createCard(r));
+/* ===========================================
+   CREATE DOM
+=========================================== */
+
+// 앞 복제
+reviews.slice(-3).forEach(review=>{
+
+    track.appendChild(createCard(review));
 
 });
 
 // 원본
+reviews.forEach(review=>{
 
-reviews.forEach(r=>{
-
-    track.appendChild(createCard(r));
-
-});
-
-// 뒤쪽 복제
-
-reviews.slice(0,3).forEach(r=>{
-
-    track.appendChild(createCard(r));
+    track.appendChild(createCard(review));
 
 });
 
-const cards=document.querySelectorAll(".review-card");
+// 뒤 복제
+reviews.slice(0,3).forEach(review=>{
 
-let current=3;
+    track.appendChild(createCard(review));
 
-let timer;
+});
 
-const gap=45;
 
-track.style.transition=".7s cubic-bezier(.22,.61,.36,1)";
+const cards = [...document.querySelectorAll(".review-card")];
 
-function update(){
+const gap = 45;
 
-    const width=cards[0].offsetWidth+gap;
+let current = 3;
 
-    track.style.transform=`translateX(-${width*current}px)`;
+let timer = null;
 
-    cards.forEach(card=>{
+let dragging = false;
 
-        card.classList.remove("active");
+let startX = 0;
 
-    });
+let isAnimating = false;
 
-    cards[current].classList.add("active");
+const AUTO_DELAY = 5500;
+
+const DRAG_DISTANCE = 35;
+
+track.style.transition =
+".8s cubic-bezier(.22,.61,.36,1)";
+
+
+/* ===========================================
+   UPDATE
+=========================================== */
+let cardWidth = 0;
+
+function calculateWidth(){
+
+    cardWidth = cards[0].offsetWidth + gap;
 
 }
 
-update();
+function update(){
+
+    calculateWidth();
+
+    track.style.transform =
+        `translateX(-${cardWidth * current}px)`;
+
+    cards.forEach(card=>card.classList.remove("active"));
+
+    const centerCard = cards[current + 1];
+
+    if(centerCard){
+
+        centerCard.classList.add("active");
+
+    }
+
+}
+
+
+/* ===========================================
+   NEXT / PREV
+=========================================== */
 
 function next(){
+
+    if(isAnimating) return;
+
+    isAnimating = true;
+
 
     current++;
 
@@ -132,11 +174,22 @@ function next(){
 
 function prev(){
 
+    if(isAnimating) return;
+
+    isAnimating = true;
+
+    clearInterval(timer);
+
     current--;
 
     update();
 
 }
+
+
+/* ===========================================
+   LOOP
+=========================================== */
 
 track.addEventListener("transitionend",()=>{
 
@@ -150,7 +203,8 @@ track.addEventListener("transitionend",()=>{
 
         requestAnimationFrame(()=>{
 
-            track.style.transition=".7s cubic-bezier(.22,.61,.36,1)";
+            track.style.transition=
+            ".8s cubic-bezier(.22,.61,.36,1)";
 
         });
 
@@ -166,23 +220,74 @@ track.addEventListener("transitionend",()=>{
 
         requestAnimationFrame(()=>{
 
-            track.style.transition=".7s cubic-bezier(.22,.61,.36,1)";
+            track.style.transition=
+            ".8s cubic-bezier(.22,.61,.36,1)";
 
         });
 
     }
 
+    isAnimating = false;
+
+    if(!dragging){
+
+        start();}
+
+
 });
+
+
+/* ===========================================
+   AUTO SLIDE
+=========================================== */
 
 function start(){
 
     clearInterval(timer);
 
-    timer=setInterval(next,4500);
+    timer=setInterval(()=>{
+
+        if(isAnimating) return;
+
+        isAnimating=true;
+
+        clearInterval(timer);
+
+        current++;
+
+        update();
+
+    },AUTO_DELAY);
 
 }
 
 start();
+
+
+/* ===========================================
+   BUTTON
+=========================================== */
+
+const nextBtn=document.querySelector(".review-next");
+
+const prevBtn=document.querySelector(".review-prev");
+
+nextBtn.addEventListener("click",()=>{
+
+    next();
+
+});
+
+prevBtn.addEventListener("click",()=>{
+
+    prev();
+
+});
+
+
+/* ===========================================
+   HOVER
+=========================================== */
 
 track.addEventListener("mouseenter",()=>{
 
@@ -196,16 +301,11 @@ track.addEventListener("mouseleave",()=>{
 
 });
 
-document.querySelector(".review-next").onclick=next;
+/* ===========================================
+   DRAG
+=========================================== */
 
-document.querySelector(".review-prev").onclick=prev;
-
-
-// ===== 드래그 =====
-
-let startX=0;
-
-let dragging=false;
+track.style.cursor="grab";
 
 track.addEventListener("pointerdown",(e)=>{
 
@@ -213,9 +313,12 @@ track.addEventListener("pointerdown",(e)=>{
 
     startX=e.clientX;
 
+    track.style.cursor="grabbing";
+
     clearInterval(timer);
 
 });
+
 
 window.addEventListener("pointerup",(e)=>{
 
@@ -223,26 +326,135 @@ window.addEventListener("pointerup",(e)=>{
 
     dragging=false;
 
+    track.style.cursor="grab";
+
     const diff=e.clientX-startX;
 
-    if(diff>70){
+    if(diff>DRAG_DISTANCE){
 
         prev();
 
     }
 
-    else if(diff<-70){
+    else if(diff<-DRAG_DISTANCE){
 
         next();
 
     }
 
-    start();
+    else{
+
+        start();
+
+    }
 
 });
 
+
+/* ===========================================
+   TOUCH
+=========================================== */
+
+track.addEventListener("touchstart",(e)=>{
+
+    startX=e.touches[0].clientX;
+
+    clearInterval(timer);
+
+});
+
+track.addEventListener("touchend",(e)=>{
+
+    const endX=e.changedTouches[0].clientX;
+
+    const diff=endX-startX;
+
+    if(diff>DRAG_DISTANCE){
+
+        prev();
+
+    }
+
+    else if(diff<-DRAG_DISTANCE){
+
+        next();
+
+    }
+
+    else{
+
+        start();
+
+    }
+
+});
+
+
+/* ===========================================
+   RESIZE
+=========================================== */
+let resizeTimer;
+
 window.addEventListener("resize",()=>{
+
+    clearTimeout(resizeTimer);
+
+    resizeTimer = setTimeout(()=>{
+
+        update();
+
+    },150);
+
+});
+
+
+/* ===========================================
+   INIT
+=========================================== */
+
+requestAnimationFrame(()=>{
 
     update();
 
 });
+
+
+/* ===========================================
+   KEYBOARD (선택)
+=========================================== */
+
+window.addEventListener("keydown",(e)=>{
+
+    if(e.key==="ArrowRight"){
+
+        next();
+
+    }
+
+    if(e.key==="ArrowLeft"){
+
+        prev();
+
+    }
+
+});
+
+
+/* ===========================================
+   PREVENT DOUBLE CLICK
+=========================================== */
+
+[nextBtn,prevBtn].forEach(btn=>{
+
+    btn.addEventListener("dblclick",(e)=>{
+
+        e.preventDefault();
+
+    });
+
+});
+
+
+/* ===========================================
+   END
+=========================================== */
