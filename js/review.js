@@ -1,74 +1,154 @@
 /* ===========================================
-   REVIEW DATA
+   SHARECAR REVIEW SLIDER V2
 =========================================== */
 
 const reviews = [
+
     {
-        name: "김○○",
-        car: "G80",
-        star: 5,
-        text: "차량 상태가 기대 이상이었습니다. 상담도 친절하고 진행도 빨라 다음에도 이용하고 싶습니다."
+        name:"김○○",
+        car:"BMW 520i M Sport",
+        star:5,
+        text:"상담부터 차량 인수까지 정말 빠르고 친절했습니다. 차량 상태도 기대 이상이었습니다."
     },
+
     {
-        name: "박○○",
-        car: "GV80",
-        star: 5,
-        text: "실제 차량이 사진과 동일했고 내부도 매우 깨끗했습니다. 믿고 이용할 수 있는 서비스였습니다."
+        name:"박○○",
+        car:"GV80",
+        star:5,
+        text:"차량 컨디션이 정말 좋았습니다. 다음에도 이용하고 싶은 서비스입니다."
     },
+
     {
-        name: "이○○",
-        car: "K8",
-        star: 5,
-        text: "예약부터 차량 인수까지 절차가 간단했습니다. 원하는 시간에 맞춰 이용할 수 있어 편리했습니다."
+        name:"이○○",
+        car:"벤츠 E300",
+        star:5,
+        text:"사진과 동일한 차량이었고 상담도 친절해서 만족했습니다."
     },
+
     {
-        name: "정○○",
-        car: "쏘렌토",
-        star: 5,
-        text: "첫 이용이라 걱정했는데 상담이 친절해서 안심할 수 있었습니다. 차량 컨디션도 매우 만족합니다."
+        name:"정○○",
+        car:"G80",
+        star:5,
+        text:"예약부터 인수까지 정말 간편했습니다. 추천드립니다."
     },
+
     {
-        name: "최○○",
-        car: "BMW 5 Series",
-        star: 5,
-        text: "수입차도 관리가 정말 잘 되어 있었습니다. 다음에도 ShareCar를 이용할 예정입니다."
+        name:"최○○",
+        car:"K8",
+        star:5,
+        text:"원하는 일정에 맞춰 이용할 수 있어서 너무 편리했습니다."
     },
+
     {
-        name: "한○○",
-        car: "아반떼",
-        star: 5,
-        text: "가성비 좋은 차량을 찾고 있었는데 원하는 조건 그대로 이용할 수 있어서 만족했습니다."
+        name:"한○○",
+        car:"쏘렌토",
+        star:5,
+        text:"첫 이용이라 걱정했는데 너무 만족스러웠습니다."
+    },
+
+    {
+        name:"강○○",
+        car:"BMW X5",
+        star:5,
+        text:"차량 관리가 정말 잘 되어 있어서 믿음이 갔습니다."
+    },
+
+    {
+        name:"송○○",
+        car:"카니발",
+        star:5,
+        text:"가족여행용으로 이용했는데 너무 만족했습니다."
+    },
+
+    {
+        name:"임○○",
+        car:"아우디 A6",
+        star:5,
+        text:"수입차인데도 상태가 너무 좋았습니다."
+    },
+
+    {
+        name:"윤○○",
+        car:"그랜저",
+        star:5,
+        text:"차량도 깨끗했고 상담도 빨랐습니다."
+    },
+
+    {
+        name:"오○○",
+        car:"BMW 7 Series",
+        star:5,
+        text:"다음에도 무조건 이용하고 싶습니다."
+    },
+
+    {
+        name:"조○○",
+        car:"제네시스 GV70",
+        star:5,
+        text:"친절하고 빠른 진행 덕분에 편하게 이용했습니다."
     }
+
 ];
 
 
 /* ===========================================
-   CREATE CARD
+   ELEMENT
 =========================================== */
 
+const slider = document.querySelector(".review-slider");
 const track = document.querySelector(".review-track");
+const pagination = document.querySelector(".review-pagination");
+
+let currentPage = 0;
+let timer;
+
+let isDragging = false;
+
+let startX = 0;
+
+const DRAG_DISTANCE = 60;
+
+
+/* ===========================================
+   CARD
+=========================================== */
 
 function createCard(review){
 
-    const card = document.createElement("div");
+    const card = document.createElement("article");
 
     card.className = "review-card";
 
     card.innerHTML = `
+
         <div class="review-star">
+
             ${"★".repeat(review.star)}
+
         </div>
 
         <div class="review-text">
+
             ${review.text}
+
         </div>
 
-        <div class="review-user">
-            <div>
-                ${review.name}
-                <span>${review.car}</span>
+        <div class="review-footer">
+
+            <div class="review-car">
+
+                ${review.car}
+
             </div>
+
+            <div class="review-user">
+
+                ${review.name} 고객
+
+            </div>
+
         </div>
+
     `;
 
     return card;
@@ -77,210 +157,197 @@ function createCard(review){
 
 
 /* ===========================================
-   CREATE DOM
+   PAGE CREATE
 =========================================== */
 
-// 앞 복제
-reviews.slice(-3).forEach(review=>{
+const pageCount = Math.ceil(reviews.length / 4);
 
-    track.appendChild(createCard(review));
+for(let i=0;i<pageCount;i++){
 
-});
+    const page = document.createElement("div");
 
-// 원본
-reviews.forEach(review=>{
+    page.className = "review-page";
 
-    track.appendChild(createCard(review));
+    const items = reviews.slice(i*4,i*4+4);
 
-});
+    items.forEach(review=>{
 
-// 뒤 복제
-reviews.slice(0,3).forEach(review=>{
+        page.appendChild(createCard(review));
 
-    track.appendChild(createCard(review));
+    });
 
-});
-
-
-const cards = [...document.querySelectorAll(".review-card")];
-
-const gap = 45;
-
-let current = 3;
-
-let timer = null;
-
-let dragging = false;
-
-let startX = 0;
-
-let isAnimating = false;
-
-const AUTO_DELAY = 5500;
-
-const DRAG_DISTANCE = 35;
-
-track.style.transition =
-".8s cubic-bezier(.22,.61,.36,1)";
-
-
-/* ===========================================
-   UPDATE
-=========================================== */
-let cardWidth = 0;
-
-function calculateWidth(){
-
-    cardWidth = cards[0].offsetWidth + gap;
+    track.appendChild(page);
 
 }
 
-function update(){
 
-    calculateWidth();
+/* ===========================================
+   PAGINATION
+=========================================== */
 
-    track.style.transform =
-        `translateX(-${cardWidth * current}px)`;
+for(let i=0;i<pageCount;i++){
 
-    cards.forEach(card=>card.classList.remove("active"));
+    const dot=document.createElement("span");
 
-    const centerCard = cards[current + 1];
+    if(i===0){
 
-    if(centerCard){
-
-        centerCard.classList.add("active");
+        dot.classList.add("active");
 
     }
 
+    dot.addEventListener("click",()=>{
+
+        move(i);
+
+    });
+
+    pagination.appendChild(dot);
+
 }
 
 
 /* ===========================================
-   NEXT / PREV
+   MOVE
+=========================================== */
+
+function move(index){
+
+    currentPage=index;
+
+    track.style.transform=
+        `translateX(-${index*100}%)`;
+
+    document
+    .querySelectorAll(".review-pagination span")
+    .forEach(dot=>dot.classList.remove("active"));
+
+    document
+    .querySelectorAll(".review-pagination span")[index]
+    .classList.add("active");
+
+}
+
+
+/* ===========================================
+   AUTO
 =========================================== */
 
 function next(){
 
-    if(isAnimating) return;
+    currentPage++;
 
-    isAnimating = true;
+    if(currentPage>=pageCount){
 
-
-    current++;
-
-    update();
-
-}
-
-function prev(){
-
-    if(isAnimating) return;
-
-    isAnimating = true;
-
-    clearInterval(timer);
-
-    current--;
-
-    update();
-
-}
-
-
-/* ===========================================
-   LOOP
-=========================================== */
-
-track.addEventListener("transitionend",()=>{
-
-    if(current===reviews.length+3){
-
-        track.style.transition="none";
-
-        current=3;
-
-        update();
-
-        requestAnimationFrame(()=>{
-
-            track.style.transition=
-            ".8s cubic-bezier(.22,.61,.36,1)";
-
-        });
+        currentPage=0;
 
     }
 
-    if(current===0){
+    move(currentPage);
 
-        track.style.transition="none";
+}
 
-        current=reviews.length;
-
-        update();
-
-        requestAnimationFrame(()=>{
-
-            track.style.transition=
-            ".8s cubic-bezier(.22,.61,.36,1)";
-
-        });
-
-    }
-
-    isAnimating = false;
-
-    if(!dragging){
-
-        start();}
-
-
-});
-
-
-/* ===========================================
-   AUTO SLIDE
-=========================================== */
 
 function start(){
 
     clearInterval(timer);
 
-    timer=setInterval(()=>{
-
-        if(isAnimating) return;
-
-        isAnimating=true;
-
-        clearInterval(timer);
-
-        current++;
-
-        update();
-
-    },AUTO_DELAY);
+    timer=setInterval(next,5000);
 
 }
 
 start();
 
-
 /* ===========================================
-   BUTTON
+   DRAG
 =========================================== */
 
-const nextBtn=document.querySelector(".review-next");
+slider.style.cursor = "grab";
 
-const prevBtn=document.querySelector(".review-prev");
+slider.addEventListener("pointerdown",(e)=>{
 
-nextBtn.addEventListener("click",()=>{
+    isDragging = true;
 
-    next();
+    startX = e.clientX;
+
+    slider.style.cursor = "grabbing";
+
+    clearInterval(timer);
 
 });
 
-prevBtn.addEventListener("click",()=>{
+window.addEventListener("pointerup",(e)=>{
 
-    prev();
+    if(!isDragging) return;
+
+    isDragging = false;
+
+    slider.style.cursor = "grab";
+
+    const diff = e.clientX - startX;
+
+    if(diff < -DRAG_DISTANCE){
+
+        next();
+
+    }
+
+    else if(diff > DRAG_DISTANCE){
+
+        currentPage--;
+
+        if(currentPage < 0){
+
+            currentPage = pageCount - 1;
+
+        }
+
+        move(currentPage);
+
+    }
+
+    start();
+
+});
+
+/* ===========================================
+   TOUCH
+=========================================== */
+
+slider.addEventListener("touchstart",(e)=>{
+
+    startX = e.touches[0].clientX;
+
+    clearInterval(timer);
+
+});
+
+slider.addEventListener("touchend",(e)=>{
+
+    const endX = e.changedTouches[0].clientX;
+
+    const diff = endX - startX;
+
+    if(diff < -DRAG_DISTANCE){
+
+        next();
+
+    }
+
+    else if(diff > DRAG_DISTANCE){
+
+        currentPage--;
+
+        if(currentPage < 0){
+
+            currentPage = pageCount - 1;
+
+        }
+
+        move(currentPage);
+
+    }
+
+    start();
 
 });
 
@@ -289,172 +356,14 @@ prevBtn.addEventListener("click",()=>{
    HOVER
 =========================================== */
 
-track.addEventListener("mouseenter",()=>{
+slider.addEventListener("mouseenter",()=>{
 
     clearInterval(timer);
 
 });
 
-track.addEventListener("mouseleave",()=>{
+slider.addEventListener("mouseleave",()=>{
 
     start();
 
 });
-
-/* ===========================================
-   DRAG
-=========================================== */
-
-track.style.cursor="grab";
-
-track.addEventListener("pointerdown",(e)=>{
-
-    dragging=true;
-
-    startX=e.clientX;
-
-    track.style.cursor="grabbing";
-
-    clearInterval(timer);
-
-});
-
-
-window.addEventListener("pointerup",(e)=>{
-
-    if(!dragging) return;
-
-    dragging=false;
-
-    track.style.cursor="grab";
-
-    const diff=e.clientX-startX;
-
-    if(diff>DRAG_DISTANCE){
-
-        prev();
-
-    }
-
-    else if(diff<-DRAG_DISTANCE){
-
-        next();
-
-    }
-
-    else{
-
-        start();
-
-    }
-
-});
-
-
-/* ===========================================
-   TOUCH
-=========================================== */
-
-track.addEventListener("touchstart",(e)=>{
-
-    startX=e.touches[0].clientX;
-
-    clearInterval(timer);
-
-});
-
-track.addEventListener("touchend",(e)=>{
-
-    const endX=e.changedTouches[0].clientX;
-
-    const diff=endX-startX;
-
-    if(diff>DRAG_DISTANCE){
-
-        prev();
-
-    }
-
-    else if(diff<-DRAG_DISTANCE){
-
-        next();
-
-    }
-
-    else{
-
-        start();
-
-    }
-
-});
-
-
-/* ===========================================
-   RESIZE
-=========================================== */
-let resizeTimer;
-
-window.addEventListener("resize",()=>{
-
-    clearTimeout(resizeTimer);
-
-    resizeTimer = setTimeout(()=>{
-
-        update();
-
-    },150);
-
-});
-
-
-/* ===========================================
-   INIT
-=========================================== */
-
-requestAnimationFrame(()=>{
-
-    update();
-
-});
-
-
-/* ===========================================
-   KEYBOARD (선택)
-=========================================== */
-
-window.addEventListener("keydown",(e)=>{
-
-    if(e.key==="ArrowRight"){
-
-        next();
-
-    }
-
-    if(e.key==="ArrowLeft"){
-
-        prev();
-
-    }
-
-});
-
-
-/* ===========================================
-   PREVENT DOUBLE CLICK
-=========================================== */
-
-[nextBtn,prevBtn].forEach(btn=>{
-
-    btn.addEventListener("dblclick",(e)=>{
-
-        e.preventDefault();
-
-    });
-
-});
-
-
-/* ===========================================
-   END
-=========================================== */

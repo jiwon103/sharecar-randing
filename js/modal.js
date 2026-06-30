@@ -3,6 +3,33 @@
    Modal Manager
 ========================================================== */
 
+const BRAND_LOGOS = {
+
+    "BMW": "assets/logo/bmw.svg",
+
+    "Mercedes-Benz": "assets/logo/mercedes.svg",
+
+    "Audi": "assets/logo/audi.svg",
+
+    "Genesis": "assets/logo/genesis.svg",
+
+    "Bentley": "assets/logo/bentley.svg",
+
+    "Porsche": "assets/logo/porsche.svg",
+
+    "Ferrari": "assets/logo/ferrari.svg",
+
+    "Lamborghini": "assets/logo/lamborghini.svg",
+
+    "Tesla": "assets/logo/tesla.svg",
+
+    "Land Rover": "assets/logo/landrover.svg",
+
+    "Mini": "assets/logo/mini.svg"
+
+};
+/********/
+
 class CarModal {
 
     constructor(){
@@ -25,13 +52,15 @@ class CarModal {
 
         this.price=document.querySelector("#modal-price");
 
-        const status = document.querySelector("#modal-status");
+        this.brandLogo=document.querySelector("#modal-brand-logo");
 
-        if(status){
+        // const status = document.querySelector("#modal-status");
 
-        status.textContent = car.status;
+        // if(status){
 
-        }
+        // status.textContent = car.status;
+
+        // }
         
         this.closeBtn=document.querySelector(".modal-close");
 
@@ -69,29 +98,29 @@ class CarModal {
 
     }
 
-    open(car){
+open(car){
 
-        this.image.src=this.convertDrive(car.image);
+    this.image.src = this.convertDrive(car.image);
+    this.image.alt = car.model;
+    // this.brandLogo.alt = car.brand + " 로고";
+    this.title.textContent = car.model;
 
-        this.title.textContent=car.model;
+    this.type.textContent = car.type;
+    this.year.textContent = car.year;
+    this.mileage.textContent = car.mileage;
+    this.color.textContent = car.color;
+    this.fuel.textContent = car.fuel;
+    this.price.textContent = car.price;
+    
+    this.brandLogo.src =
+    BRAND_LOGOS[car.brand] ||
+    "assets/logo/default.svg";
 
-        this.type.textContent="차종 : "+car.type;
+    this.modal.classList.add("show");
 
-        this.year.textContent="연식 : "+car.year;
+    document.body.style.overflow = "hidden";
 
-        this.color.textContent="색상 : "+car.color;
-
-        this.fuel.textContent="연료 : "+car.fuel;
-
-        this.mileage.textContent="주행거리 : "+car.mileage;
-
-        this.price.textContent="가격 : "+car.price;
-
-        this.modal.classList.add("show");
-
-        document.body.style.overflow="hidden";
-
-    }
+}
 
     close(){
 
