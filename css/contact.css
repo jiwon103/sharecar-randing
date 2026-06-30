@@ -1,0 +1,533 @@
+/* ==========================================================
+   CONTACT
+========================================================== */
+
+.contact-section{
+
+    position:relative;
+
+    padding:140px 0;
+
+    /* background:#ffffff; */
+
+    background-image: url(../assets/image/contactbg.png);
+
+        background-repeat:no-repeat;
+
+    background-size:cover;
+
+    background-position:right center;
+
+    width: 100%;
+    overflow:hidden;
+
+}
+
+
+/* ========================================= */
+
+.contact-bg{
+
+    position:absolute;
+
+    top:0;
+
+    right:0;
+
+    width:700px;
+
+    height:100%;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    pointer-events:none;
+
+}
+
+.contact-bg img{
+
+    width:100%;
+
+    max-width:680px;
+
+    opacity:.08;
+
+    user-select:none;
+
+}
+
+
+/* ========================================= */
+
+.contact-title{
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+    max-width:900px;
+
+    margin:0 auto 90px;
+
+}
+
+.contact-title span{
+
+    display:inline-block;
+
+    font-size:20px;
+
+    letter-spacing:6px;
+
+    color:#ff7a00;
+
+    font-weight:700;
+
+    margin-bottom:18px;
+
+}
+
+.contact-title h2{
+
+    font-size:58px;
+
+    line-height:1.25;
+
+    font-weight:800;
+
+    color:#111;
+
+    margin-bottom:28px;
+
+}
+
+.contact-title h2 em{
+
+    color:#ff7a00;
+
+    font-style:normal;
+
+}
+
+.contact-title p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    font-size:20px;
+
+    color:#464646;
+
+    line-height:1.9;
+
+    font-weight: 600;
+
+}
+
+
+/* ========================================= */
+
+.contact-feature-wrap{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:28px;
+
+    margin-bottom:70px;
+
+}
+
+.contact-feature-card{
+
+    position:relative;
+
+    background:#fff;
+
+    border-radius:24px;
+
+    padding:45px 35px;
+
+    border:1px solid #ededed;
+
+    transition:.35s;
+
+    overflow:hidden;
+
+    box-shadow:
+
+        0 15px 40px rgba(0,0,0,.05);
+
+}
+
+.contact-feature-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:0;
+
+    height:4px;
+
+    background:#ff7a00;
+
+    transition:.35s;
+
+}
+
+.contact-feature-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+
+        0 30px 60px rgba(0,0,0,.10);
+
+}
+
+.contact-feature-card:hover::before{
+
+    width:100%;
+
+}
+
+
+/* ========================================= */
+
+.feature-number{
+
+    font-size:50px;
+
+    font-weight:700;
+
+    color:#ff7a00;
+
+    margin-bottom:22px;
+
+}
+
+.feature-icon{
+
+    width:110px;
+
+    height:110px;
+
+
+    margin:0 auto 30px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#fafafa;
+
+    border-radius:50%;
+
+}
+
+.feature-icon img{
+
+
+    width:100px;
+
+    height:100px;
+
+    object-fit:contain;
+
+
+}
+
+.contact-feature-card h3{
+
+    font-size:28px;
+
+    margin-bottom:18px;
+
+    color:#111;
+
+}
+
+.contact-feature-card p{
+
+    font-size:20px;
+
+    color:#5c5b5b;
+
+    line-height:1.9;
+
+}
+
+/* ==========================================================
+   CTA
+========================================================== */
+
+.contact-cta{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:24px;
+
+    max-width:900px;
+
+    margin:0 auto;
+
+}
+
+.contact-btn{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:28px 34px;
+
+    border-radius:22px;
+
+    text-decoration:none;
+
+    transition:.35s;
+
+    overflow:hidden;
+
+    min-height: 120px;
+
+}
+
+.contact-btn strong{
+
+    display:block;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+.contact-btn span{
+
+    font-size:15px;
+
+    opacity:.8;
+
+}
+
+.contact-btn i{
+
+    font-style:normal;
+
+    font-size:34px;
+
+    transition:.35s;
+
+}
+
+/* ==========================================================
+   PRIMARY
+========================================================== */
+
+.contact-btn.primary{
+
+    background:#ff7a00;
+
+    color:#fff;
+
+    box-shadow:
+
+        0 18px 45px rgba(255,122,0,.28);
+
+}
+
+.contact-btn.primary:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:
+
+        0 25px 60px rgba(255,122,0,.38);
+
+}
+
+.contact-btn.primary:hover i{
+
+    transform:translateX(8px);
+
+}
+
+/* ==========================================================
+   SECONDARY
+========================================================== */
+
+.contact-btn.secondary{
+
+    background:#fff;
+
+    color:#111;
+
+    border:2px solid #111;
+
+}
+
+.contact-btn.secondary:hover{
+
+    transform:translateY(-6px);
+
+    background:#111;
+
+    color:#fff;
+
+}
+
+.contact-btn.secondary:hover i{
+
+    transform:translateX(8px);
+
+}
+
+/* ==========================================================
+   BOTTOM
+========================================================== */
+
+.contact-bottom{
+
+    margin-top:70px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:45px;
+
+    flex-wrap:wrap;
+
+    color:#666;
+
+    font-size:15px;
+
+}
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media(max-width:1024px){
+
+.contact-title h2{
+
+    font-size:46px;
+
+}
+
+.contact-feature-wrap{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media(max-width:768px){
+
+.contact-section{
+
+    padding:90px 0;
+
+}
+
+.contact-bg{
+
+    display:none;
+
+}
+
+.contact-title{
+
+    margin-bottom:60px;
+
+}
+
+.contact-title h2{
+
+    font-size:34px;
+
+}
+
+.contact-title p{
+
+    font-size:15px;
+
+}
+
+.contact-feature-wrap{
+
+    grid-template-columns:1fr;
+
+    gap:18px;
+
+}
+
+.contact-feature-card{
+
+    padding:30px;
+
+}
+
+.contact-feature-card h3{
+
+    font-size:22px;
+
+}
+
+.contact-btn{
+
+    padding:22px 24px;
+
+}
+
+.contact-btn strong{
+
+    font-size:20px;
+
+}
+
+.contact-btn i{
+
+    font-size:28px;
+
+}
+
+.contact-bottom{
+
+    gap:18px;
+
+    font-size:14px;
+
+}
+
+}

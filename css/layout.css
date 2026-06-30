@@ -329,7 +329,7 @@ body{
 }
 .hero-subtitle{
 
-    font-size:22px;
+    font-size:40px;
 
     letter-spacing:4px;
 
@@ -337,12 +337,14 @@ body{
 
     margin-bottom:20px;
 
+    font-weight: lighter;
+
 }
 .hero-content p{
 
     color:#bdbdbd;
 
-    font-size:24px;
+    font-size:32px;
 
     line-height:1.8;
 
@@ -732,60 +734,18 @@ section{
 }
 
 /* ---------------- WHY ---------------- */
-/* 
-.why{
 
-    position:relative;
-
-    z-index:20;
-
-    margin-top:-80px;
-
-    background:#f8f8f8;
-
-    border-radius:40px 40px 0 0;
-
-}
-
-.why-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:80px;
-    align-items:center;
-    padding-top: 30px;
-}
-
-.why-right{
-
-    overflow:hidden;
-
-    border-radius:30px;
-
-    height:600px;
-
-}
-
-.why-right img{
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
-
-    transition:1s;
-
-}
-
-.why-right:hover img{
-
-    transform:scale(1.05);
-
-} */
 .why-sharecar{
 
     background:#0f0f0f;
 
+    background-image: url(../assets/image/whybg.png);
+
+           background-repeat:no-repeat;
+
+    background-size:cover;
+
+    background-position:right center;
     padding:140px 0;
 
 }
@@ -812,7 +772,7 @@ section{
 
 .why-header h2{
 
-    color:#fff;
+    color:#000000;
 
     font-size: 50px;
 
@@ -942,7 +902,7 @@ section{
 
     font-size:30px;
 
-    color:#ffffff;
+    color:#000000;
 
 }
 
@@ -985,7 +945,7 @@ section{
 
 /* ---------------- VIDEO ---------------- */
 
-
+/* 
 .video-showcase{
 
     display:grid;
@@ -997,9 +957,7 @@ section{
         z-index: 50;
         position: relative;
     
-    /* position: relative;
-    z-index: 5;
-    background: #fff; */
+
 }
 
 .video-right{
@@ -1031,9 +989,19 @@ section{
     width:100%;
     height:100%;
     object-fit:cover;
-}
+} */
 
 /* ---------------- EVENT ---------------- */
+
+.event-section{
+    background-color: #141414;
+}
+
+.event-section h2{
+    color: #fff;
+    font-weight: 700;
+    font-size:80px;
+}
 
 .event-banner{
 
@@ -1100,49 +1068,10 @@ section{
 
 }
 
-/* ---------------- PROCESS ---------------- */
 
-/* .process-section{
-
-    position:relative;
-
-    z-index:60;
-
-    margin-top:-80px;
-
-    background:#fafafa;
-
-    border-radius:40px 40px 0 0;
-
-}
-
-.timeline{
-    width:min(1200px,92%);
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:30px;
-} */
 
 /* ---------------- FAQ ---------------- */
 
-.faq-section{
-
-    position:relative;
-
-    z-index:70;
-
-    margin-top:-80px;
-
-    background:white;
-
-    border-radius:40px 40px 0 0;
-
-}
-.faq-list{
-    width:min(900px,92%);
-    margin:auto;
-}
 
 /* ---------------- CONTACT ---------------- */
 
@@ -1389,7 +1318,7 @@ footer{
 
     border-radius:50%;
 
-    background:#111;
+    background:#000000;
 
     display:flex;
 
@@ -1405,9 +1334,9 @@ footer{
 
 .float-icon img{
 
-    width:100px;
+    width:80px;
 
-    height:100px;
+    height:80px;
 
     object-fit:contain;
 
@@ -1417,11 +1346,12 @@ footer{
 
     margin-top:8px;
 
-    color:#fff;
+    color:#ffca74;
+    text-shadow: 1px 1px 0 #050505;
 
-    font-size:12px;
+    font-size:18px;
 
-    font-weight:600;
+    font-weight: 600;
 
     letter-spacing:-0.3px;
 

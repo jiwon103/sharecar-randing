@@ -687,7 +687,7 @@ align-items:center;
 
 }
 
-.event-modal.active{
+.event-modal.show{
 
     opacity:1;
 
@@ -823,52 +823,9 @@ align-items:center;
 
 }
 
-
-/* ---------- MODAL ---------- */
-
-.car-modal{
-
-    position:fixed;
-    inset:0;
-    display:none;
-    background:rgba(0,0,0,.75);
-    z-index:9999;
-
-}
+/**********/
 
 /* .modal-wrap{
-
-    width:min(1100px,92%);
-    margin:5vh auto;
-    display:grid;
-    grid-template-columns:1fr 420px;
-    background:#fff;
-    border-radius:30px;
-    overflow:hidden;
-
-} */
-/* .modal-wrap{
-
-    width:min(1200px,92%);
-
-    display:grid;
-
-    grid-template-columns:58% 42%;
-
-    background:#fff;
-
-    border-radius:32px;
-
-    overflow:hidden;
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.25);
-
-            animation:modalUp .35s ease;
-
-} */
-
-.modal-wrap{
 
     width:min(1200px,92%);
     margin:4vh auto;
@@ -888,7 +845,7 @@ align-items:center;
 
     animation:modalUp .35s ease;
 
-}
+} */
 
 
 @keyframes modalUp{
@@ -918,7 +875,7 @@ align-items:center;
 
 } */
 
-.modal-image{
+/* .modal-image{
 
     background:#f7f7f7;
 
@@ -933,7 +890,7 @@ align-items:center;
     padding:45px;
 
 
-}
+} */
 
 /* .modal-image img{
 
@@ -955,15 +912,11 @@ align-items:center;
 
 }
 
-/* .modal-info{
 
-    padding:40px;
-
-} */
 
 .modal-info{
 
-    padding:48px;
+    padding: 26px 34px 34px;
 
     display:flex;
 
@@ -999,7 +952,7 @@ align-items:center;
     align-items:center;
     justify-content:center;
     min-height:80px;
-    font-size:17px;
+    font-size:18px;
     font-weight:600;
     transition:.3s;
     flex-direction: column;
@@ -1017,7 +970,7 @@ align-items:center;
 
     color:#888;
 
-    font-size:13px;
+    font-size:17px;
 
     margin-bottom:8px;
 
@@ -1056,13 +1009,16 @@ align-items:center;
 }#modal-price{
 
 
-    margin-top:20px;
+    margin-top:10px;
+    margin-bottom: 10px;
 
-    font-size: 20px;
+    font-size: 28px;
 
     font-weight: 700;
 
-    color:#ff6b00;
+    color:#ffffff;
+
+    
 
 }
 /* .modal-title{
@@ -1087,31 +1043,7 @@ align-items:center;
 
 }
 
-/* #modal-type{
 
-    color:#888;
-
-    letter-spacing:2px;
-
-    font-size:13px;
-
-    margin-bottom:30px;
-
-} */
-
-
-
-/* .modal-spec{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:18px;
-
-    margin:35px 0;
-
-} */
 
 .modal-spec{
 
@@ -1402,3 +1334,340 @@ footer h4{
 
 
 
+/* ==========================================================
+   MODAL V2
+========================================================== */
+
+.car-modal{
+ position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.65);
+
+    backdrop-filter:blur(8px);
+
+    z-index:9999;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s;
+}
+
+.car-modal.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.modal-wrap{
+
+  width:min(720px,92vw);
+
+    background:#fff;
+
+    border-radius:26px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    display:block;      /* 추가 */
+
+    margin:0 auto;      /* 추가 */
+
+}
+
+
+/* 닫기 */
+
+.modal-close{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    z-index:20;
+
+}
+
+
+/* 브랜드 */
+
+.modal-brand{
+
+    padding:22px 0 18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#fff;
+
+}
+
+.modal-brand-logo{
+
+    height:30px;
+
+    max-width:140px;
+
+    object-fit:contain;
+
+}
+
+
+/* 이미지 */
+
+.modal-image{
+
+    position:relative;
+
+    width:100%;
+
+    height: 430px;
+
+    overflow: hidden;
+
+    aspect-ratio:16/9;
+
+    background:#f5f5f5;
+
+    overflow:hidden;
+
+}
+
+.modal-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+
+
+
+/* 내용 */
+
+.modal-info{
+
+    padding:34px;
+
+}
+
+
+/* 제목 */
+
+.modal-info h2{
+
+    text-align:center;
+
+    font-size:30px;
+
+    font-weight:700;
+
+    margin-bottom:28px;
+
+}
+
+
+/* 차량 정보 */
+
+.modal-specs{
+
+    /* display:grid;
+
+    grid-template-columns:repeat(5,1fr); */
+
+    display: flex;
+
+    background:#f8f8f8;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    margin-bottom:24px;
+
+}
+
+.spec-item{
+
+    flex: 1;
+
+    padding:20px 10px;
+
+    text-align:center;
+
+    border-right:1px solid #ececec;
+
+}
+
+.spec-item:last-child{
+
+    border-right:none;
+
+}
+
+.spec-item span{
+
+    display:block;
+
+    font-size:13px;
+
+    color:#888;
+
+    margin-bottom:10px;
+
+}
+
+.spec-item strong{
+
+    font-size:16px;
+
+    font-weight:700;
+
+}
+
+
+/* 선납금 */
+
+.modal-price-box{
+
+    height:62px;
+
+    border-radius:16px;
+
+    background:#111;
+
+    color:#fff;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 24px;
+
+    margin-bottom:14px;
+
+}
+
+.modal-price-box span{
+
+    font-size:15px;
+
+    opacity:.8;
+
+}
+
+.modal-price-box strong{
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+
+/* 버튼 */
+
+.modal-buttons{
+
+    display:block;
+
+}
+
+.modal-buttons .btn{
+
+    width:100%;
+
+    height:62px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:16px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+}
+
+
+/* 모바일 */
+
+@media(max-width:768px){
+
+.modal-wrap{
+
+    width:95vw;
+
+    border-radius:22px;
+
+}
+
+.modal-info{
+
+    padding:24px;
+
+}
+
+.modal-info h2{
+
+    font-size:24px;
+
+}
+
+.modal-specs{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+.spec-item{
+
+    border-bottom:1px solid #ececec;
+
+}
+
+.spec-item:nth-child(2n){
+
+    border-right:none;
+
+}
+
+}
