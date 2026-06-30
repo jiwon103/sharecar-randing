@@ -64,6 +64,8 @@ function drawTable(list = cars){
 
             </td>
 
+            <td>${car.brand}</td>
+
             <td>${car.model}</td>
 
             <td>${car.type}</td>
@@ -190,6 +192,8 @@ form.addEventListener("submit",async(e)=>{
 
     const car={
 
+    brand: document.getElementById("brand").value,
+    
     model:document.getElementById("model").value,
 
     type:document.getElementById("type").value,
@@ -255,58 +259,9 @@ if (editingId) {
 });
 
 
-// const form = document.getElementById("carForm");
-
-// form.addEventListener("submit",async function(e){
-
-//     e.preventDefault();
-
-//     const car={
-
-//         model:document.getElementById("model").value,
-
-//         type:document.getElementById("type").value,
-
-//         year:document.getElementById("year").value,
-
-//         color:document.getElementById("color").value,
-
-//         fuel:document.getElementById("fuel").value,
-
-//         mileage:document.getElementById("mileage").value,
-
-//         price:document.getElementById("price").value,
-
-//         imageurl:document.getElementById("imageurl").value,
-
-//         status:document.getElementById("status").value
-
-//     };
-
-//     try{
-
-//         await addCar(car);
-
-//         alert("차량이 등록되었습니다.");
-
-//         form.reset();
-
-//         closeDrawer();
-
-//         await loadCars();
-
-//     }catch(error){
-
-//         console.error(error);
-
-//         alert("등록 실패");
-
-//     }
-
-// });
 
 /* ==========================================
-   검색
+검색
 ========================================== */
 
 searchInput.addEventListener("input",function(){
@@ -315,7 +270,11 @@ searchInput.addEventListener("input",function(){
 
     const result=cars.filter(car=>{
 
-        return car.model.toLowerCase().includes(keyword);
+        return car.model.toLowerCase().includes(keyword)
+        ||
+        car.brand.toLowerCase().includes(keyword)
+
+
 
     });
 
@@ -341,12 +300,13 @@ document.addEventListener("click", function (e) {
 
     editingId = id;
 
+    document.getElementById("brand").value = car.brand;
     document.getElementById("model").value = car.model;
     document.getElementById("type").value = car.type;
     document.getElementById("year").value = car.year;
+    document.getElementById("mileage").value = car.mileage;
     document.getElementById("color").value = car.color;
     document.getElementById("fuel").value = car.fuel;
-    document.getElementById("mileage").value = car.mileage;
     document.getElementById("price").value = car.price;
     document.getElementById("imageurl").value = car.imageurl;
     document.getElementById("status").value = car.status;

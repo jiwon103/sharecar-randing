@@ -134,7 +134,7 @@
             <input
                 id="searchInput"
                 type="text"
-                placeholder="차량명 검색">
+                placeholder="브랜드 또는 차량명 검색">
 
         </section>
 
@@ -149,6 +149,8 @@
                     <tr>
 
                         <th>사진</th>
+
+                        <th>브랜드</th>
 
                         <th>모델</th>
 
@@ -201,6 +203,35 @@
     </div>
 
     <form id="carForm">
+
+        <label>
+
+    브랜드
+
+    <input
+        type="text"
+        id="brand"
+        list="brandList"
+        placeholder="예: BMW">
+
+        </label>
+
+        <datalist id="brandList">
+
+            <option value="BMW">
+            <option value="Mercedes-Benz">
+            <option value="Audi">
+            <option value="Genesis">
+            <option value="Porsche">
+            <option value="Bentley">
+            <option value="Ferrari">
+            <option value="Lamborghini">
+            <option value="Land Rover">
+            <option value="Volvo">
+            <option value="Tesla">
+            <option value="Mini">
+
+        </datalist>
 
         <label>
 
@@ -266,7 +297,7 @@
 
         <label>
 
-            가격
+            선납금
 
             <input
                 type="text"
