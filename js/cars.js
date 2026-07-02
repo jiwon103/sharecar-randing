@@ -101,7 +101,7 @@ class ShareCar {
 
                             price: car.price,
 
-                            status: car.status || "판매중",
+                            status: car.status,
 
                             recommend: car.recommend
 
@@ -159,30 +159,27 @@ class ShareCar {
                                 this.renderPagination();
     }
     /******* */
-    renderFeatured(){
+renderFeatured(){
 
-console.log("renderFeatured 실행");
-
-    const container=document.querySelector("#featured-list");
+    const container = document.querySelector("#featured-list");
 
     if(!container) return;
 
-    container.innerHTML="";
+    container.innerHTML = "";
 
-    const cars=this.cars
-        .filter(car=>String(car.recommend).toUpperCase()=="TRUE")
+    const cars = this.cars
+        .filter(car => String(car.recommend).toUpperCase() === "TRUE")
         .slice(0,3);
 
     cars.forEach((car,index)=>{
 
-        container.innerHTML+=`
+        const card = document.createElement("article");
 
-        <article class="featured-card">
+        card.className = "featured-card";
 
+        card.innerHTML = `
             <div class="featured-number">
-
                 ${String(index+1).padStart(2,"0")}
-
             </div>
 
             <img src="${car.image}" alt="${car.model}">
@@ -191,33 +188,30 @@ console.log("renderFeatured 실행");
 
                 <h3>${car.model}</h3>
 
-                <p>
-
-                    쉐어카 추천 차량
-
-                </p>
-
                 <ul>
-
                     <li>${car.type}</li>
-
                     <li>${car.fuel}</li>
-
                     <li>${car.year}년</li>
-
                 </ul>
 
-                <a href="#contact">
-
+                <a href="#" class="featured-view">
                     차량 보기 →
-
                 </a>
 
             </div>
-
-        </article>
-
         `;
+
+        card.addEventListener("click",(e)=>{
+
+            e.preventDefault();
+
+            if(window.carModal){
+                window.carModal.open(car);
+            }
+
+        });
+
+        container.appendChild(card);
 
     });
 
@@ -332,35 +326,38 @@ if (nextBtn)
                     decoding="async"
                 >
 
-                <span class="car-status">
-
-                    ${car.status}
-
-                </span>
 
             </div>
-
-            <div class="car-info">
-
-                <h3 class="car-title">
-
-                    ${car.model}
-
-                </h3>
-
                 <div class="car-info">
 
+                    <h3 class="car-title">
+                        ${car.model}
+                    </h3>
+
+                    <div class="car-meta">
+
+                        <span>${car.year}년</span>
+
+                        <span>${this.formatNumber(car.mileage)}km</span>
+
+                        <span>${car.fuel}</span>
+
+                    </div>
+
+                    <div class="car-price">
+
+                        <span class="price-label">
+                            선납금
+                        </span>
+
+                            <strong>
+                                ${this.formatNumber(car.price)}원
+                            </strong>
 
 
-                    <p class="car-summary">
-
-                        ${car.year}년 · ${car.mileage}
-
-                    </p>
+                    </div>
 
                 </div>
-
-            </div>
 
         `;
 
@@ -377,6 +374,22 @@ if (nextBtn)
         return card;
 
     }
+
+    formatNumber(value){
+
+    if(value === undefined || value === null || value === ""){
+        return "-";
+    }
+
+    const number = Number(String(value).replace(/,/g,""));
+
+    if(isNaN(number)){
+        return value;
+    }
+
+    return number.toLocaleString("ko-KR");
+
+}
 convertDrive(url) {
 
     

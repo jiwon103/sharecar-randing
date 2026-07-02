@@ -5,91 +5,149 @@
 const reviews = [
 
     {
-        name:"김○○",
-        car:"BMW 520i M Sport",
-        star:5,
-        text:"상담부터 차량 인수까지 정말 빠르고 친절했습니다. 차량 상태도 기대 이상이었습니다."
+        tag:"BMW 520i 이용 고객",
+
+        title:"상담부터 출고까지\n정말 빨랐어요.",
+
+        desc:"생각보다 진행이 훨씬 빨라서 놀랐습니다.\n차량 상태도 정말 만족스러웠습니다.",
+
+        highlight:"다음에도 꼭 다시 이용할 예정입니다.",
+
+        user:"30대 직장인 김○○님"
     },
 
     {
-        name:"박○○",
-        car:"GV80",
-        star:5,
-        text:"차량 컨디션이 정말 좋았습니다. 다음에도 이용하고 싶은 서비스입니다."
+        tag:"GV80 이용 고객",
+
+        title:"원하는 차량을\n부담 없이 이용했습니다.",
+
+        desc:"처음엔 걱정했는데 상담부터 출고까지\n모든 과정이 정말 친절했습니다.",
+
+        highlight:"가족들도 모두 만족했습니다.",
+
+        user:"40대 자영업 박○○님"
     },
 
     {
-        name:"이○○",
-        car:"벤츠 E300",
-        star:5,
-        text:"사진과 동일한 차량이었고 상담도 친절해서 만족했습니다."
+        tag:"벤츠 E300 이용 고객",
+
+        title:"사진 그대로의\n차량이었습니다.",
+
+        desc:"실제로 받아보니 차량 컨디션이\n기대 이상이라 정말 만족했습니다.",
+
+        highlight:"수입차도 믿고 이용할 수 있습니다.",
+
+        user:"30대 프리랜서 이○○님"
     },
 
     {
-        name:"정○○",
-        car:"G80",
-        star:5,
-        text:"예약부터 인수까지 정말 간편했습니다. 추천드립니다."
+        tag:"G80 이용 고객",
+
+        title:"차량 상태가\n정말 좋았습니다.",
+
+        desc:"내 차처럼 관리되어 있어서\n안심하고 이용했습니다.",
+
+        highlight:"주변에도 추천하고 있습니다.",
+
+        user:"50대 사업자 정○○님"
     },
 
     {
-        name:"최○○",
-        car:"K8",
-        star:5,
-        text:"원하는 일정에 맞춰 이용할 수 있어서 너무 편리했습니다."
+        tag:"BMW X5 이용 고객",
+
+        title:"SUV도 정말\n깨끗했습니다.",
+
+        desc:"장거리 여행이었는데 차량 상태가\n너무 좋아 편하게 다녀왔습니다.",
+
+        highlight:"SUV 이용도 적극 추천합니다.",
+
+        user:"40대 김○○님"
     },
 
     {
-        name:"한○○",
-        car:"쏘렌토",
-        star:5,
-        text:"첫 이용이라 걱정했는데 너무 만족스러웠습니다."
-    },
+        tag:"카니발 이용 고객",
 
-    {
-        name:"강○○",
-        car:"BMW X5",
-        star:5,
-        text:"차량 관리가 정말 잘 되어 있어서 믿음이 갔습니다."
-    },
+        title:"가족 여행에\n딱이었습니다.",
 
-    {
-        name:"송○○",
-        car:"카니발",
-        star:5,
-        text:"가족여행용으로 이용했는데 너무 만족했습니다."
-    },
+        desc:"아이들과 함께 이용했는데\n너무 만족스러웠습니다.",
 
-    {
-        name:"임○○",
-        car:"아우디 A6",
-        star:5,
-        text:"수입차인데도 상태가 너무 좋았습니다."
-    },
+        highlight:"가족 여행이라면 꼭 추천합니다.",
 
-    {
-        name:"윤○○",
-        car:"그랜저",
-        star:5,
-        text:"차량도 깨끗했고 상담도 빨랐습니다."
+        user:"30대 박○○님"
     },
-
     {
-        name:"오○○",
-        car:"BMW 7 Series",
-        star:5,
-        text:"다음에도 무조건 이용하고 싶습니다."
-    },
+    tag:"제네시스 G90 이용 고객",
 
-    {
-        name:"조○○",
-        car:"제네시스 GV70",
-        star:5,
-        text:"친절하고 빠른 진행 덕분에 편하게 이용했습니다."
-    }
+    title:"처음 이용인데도\n정말 편했습니다.",
+
+    desc:"상담도 빠르고 진행 과정이 명확해서\n처음인데도 어렵지 않았습니다.",
+
+    highlight:"주변에도 추천하고 싶을 만큼 만족했습니다.",
+
+    user:"40대 법인사업자 최○○님"
+},
+
+{
+    tag:"BMW X7 이용 고객",
+
+    title:"차량 상태가\n정말 최고였습니다.",
+
+    desc:"사진보다 실물이 훨씬 좋았고\n실내도 매우 깨끗했습니다.",
+
+    highlight:"프리미엄 차량을 믿고 이용할 수 있었습니다.",
+
+    user:"30대 자영업 김○○님"
+},
+
+{
+    tag:"아우디 A7 이용 고객",
+
+    title:"상담이 정말\n친절했습니다.",
+
+    desc:"궁금한 점을 하나하나 설명해 주셔서\n안심하고 진행했습니다.",
+
+    highlight:"다음 차량도 CAR GO를 이용할 예정입니다.",
+
+    user:"30대 직장인 박○○님"
+},
+
+{
+    tag:"GV70 이용 고객",
+
+    title:"생각보다 훨씬\n간편했습니다.",
+
+    desc:"절차가 복잡할 줄 알았는데\n상담부터 출고까지 정말 빨랐습니다.",
+
+    highlight:"처음 이용하는 분들에게도 추천합니다.",
+
+    user:"20대 프리랜서 이○○님"
+},
+
+{
+    tag:"벤츠 S580 이용 고객",
+
+    title:"프리미엄 서비스가\n느껴졌습니다.",
+
+    desc:"차량 관리 상태도 좋고\n응대도 정말 만족스러웠습니다.",
+
+    highlight:"고급 차량도 믿고 맡길 수 있었습니다.",
+
+    user:"50대 대표 김○○님"
+},
+
+{
+    tag:"카니발 하이리무진 이용 고객",
+
+    title:"가족 모두\n만족했습니다.",
+
+    desc:"장거리 여행 동안 정말 편하게 이용했고\n아이들도 매우 좋아했습니다.",
+
+    highlight:"가족 여행이라면 적극 추천합니다.",
+
+    user:"40대 직장인 한○○님"
+}
 
 ];
-
 
 /* ===========================================
    ELEMENT
@@ -121,31 +179,45 @@ function createCard(review){
 
     card.innerHTML = `
 
-        <div class="review-star">
+        <div class="review-tag">
 
-            ${"★".repeat(review.star)}
-
-        </div>
-
-        <div class="review-text">
-
-            ${review.text}
+            ${review.tag}
 
         </div>
 
-        <div class="review-footer">
 
-            <div class="review-car">
 
-                ${review.car}
+        <h3>
 
-            </div>
+            ${review.title.replace(/\n/g,"<br>")}
 
-            <div class="review-user">
+        </h3>
 
-                ${review.name} 고객
+        <p>
 
-            </div>
+            ${review.desc.replace(/\n/g,"<br>")}
+
+        </p>
+
+        <strong>
+
+            ${review.highlight}
+
+        </strong>
+
+        <div class="review-user">
+
+            <strong>
+
+                ${review.user}
+
+            </strong>
+
+            <span>
+
+                REAL REVIEW
+
+            </span>
 
         </div>
 
@@ -160,7 +232,7 @@ function createCard(review){
    PAGE CREATE
 =========================================== */
 
-const pageCount = Math.ceil(reviews.length / 4);
+const pageCount = Math.ceil(reviews.length / 3);
 
 for(let i=0;i<pageCount;i++){
 
@@ -168,7 +240,7 @@ for(let i=0;i<pageCount;i++){
 
     page.className = "review-page";
 
-    const items = reviews.slice(i*4,i*4+4);
+    const items = reviews.slice(i*3,i*3+3);
 
     items.forEach(review=>{
 
@@ -180,6 +252,9 @@ for(let i=0;i<pageCount;i++){
 
 }
 
+
+const prevBtn = document.querySelector(".review-arrow.prev");
+const nextBtn = document.querySelector(".review-arrow.next");
 
 /* ===========================================
    PAGINATION
@@ -212,54 +287,74 @@ for(let i=0;i<pageCount;i++){
 
 function move(index){
 
-    currentPage=index;
+    if(index >= pageCount){
 
-    track.style.transform=
-        `translateX(-${index*100}%)`;
-
-    document
-    .querySelectorAll(".review-pagination span")
-    .forEach(dot=>dot.classList.remove("active"));
-
-    document
-    .querySelectorAll(".review-pagination span")[index]
-    .classList.add("active");
-
-}
-
-
-/* ===========================================
-   AUTO
-=========================================== */
-
-function next(){
-
-    currentPage++;
-
-    if(currentPage>=pageCount){
-
-        currentPage=0;
+        index = 0;
 
     }
 
-    move(currentPage);
+    if(index < 0){
+
+        index = pageCount - 1;
+
+    }
+
+    currentPage = index;
+
+    track.style.transform =
+        `translateX(-${currentPage * 100}%)`;
+
+    document
+        .querySelectorAll(".review-pagination span")
+        .forEach(dot=>dot.classList.remove("active"));
+
+    document
+        .querySelectorAll(".review-pagination span")[currentPage]
+        .classList.add("active");
 
 }
 
+function next(){
+
+    move(currentPage + 1);
+
+}
+
+function prev(){
+
+    move(currentPage - 1);
+
+}
+
+nextBtn.addEventListener("click",()=>{
+
+    next();
+
+    start();
+
+});
+
+prevBtn.addEventListener("click",()=>{
+
+    prev();
+
+    start();
+
+});
 
 function start(){
 
     clearInterval(timer);
 
-    timer=setInterval(next,5000);
+    timer = setInterval(()=>{
+
+        next();
+
+    },5000);
 
 }
 
 start();
-
-/* ===========================================
-   DRAG
-=========================================== */
 
 slider.style.cursor = "grab";
 
@@ -293,25 +388,13 @@ window.addEventListener("pointerup",(e)=>{
 
     else if(diff > DRAG_DISTANCE){
 
-        currentPage--;
-
-        if(currentPage < 0){
-
-            currentPage = pageCount - 1;
-
-        }
-
-        move(currentPage);
+        prev();
 
     }
 
     start();
 
 });
-
-/* ===========================================
-   TOUCH
-=========================================== */
 
 slider.addEventListener("touchstart",(e)=>{
 
@@ -335,26 +418,13 @@ slider.addEventListener("touchend",(e)=>{
 
     else if(diff > DRAG_DISTANCE){
 
-        currentPage--;
-
-        if(currentPage < 0){
-
-            currentPage = pageCount - 1;
-
-        }
-
-        move(currentPage);
+        prev();
 
     }
 
     start();
 
 });
-
-
-/* ===========================================
-   HOVER
-=========================================== */
 
 slider.addEventListener("mouseenter",()=>{
 
@@ -367,3 +437,4 @@ slider.addEventListener("mouseleave",()=>{
     start();
 
 });
+

@@ -107,10 +107,14 @@ open(car){
 
     this.type.textContent = car.type;
     this.year.textContent = car.year;
-    this.mileage.textContent = car.mileage;
+    this.mileage.textContent =
+    Number(String(car.mileage).replace(/[^\d]/g, ""))
+        .toLocaleString("ko-KR") + "km";
     this.color.textContent = car.color;
     this.fuel.textContent = car.fuel;
-    this.price.textContent = car.price;
+    this.price.textContent =
+    Number(String(car.price).replace(/[^\d]/g, ""))
+        .toLocaleString("ko-KR") + "원";
     
     this.brandLogo.src =
     BRAND_LOGOS[car.brand] ||

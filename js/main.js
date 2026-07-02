@@ -6,8 +6,7 @@ const heroVideo = document.getElementById("heroVideo");
 
 const videos = [
     "assets/video/hero1.mp4",
-    "assets/video/hero2.mp4",
-    "assets/video/hero3.mp4"
+    "assets/video/hero2.mp4"
 ];
 
 let currentVideo = 0;
