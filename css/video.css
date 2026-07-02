@@ -20,6 +20,7 @@
         var(--process-bg);
     padding:120px 0;
     overflow:hidden;
+
 }
 
 .process-wrapper{
@@ -33,11 +34,12 @@
 
 .process-label{
     display:inline-block;
-    color:var(--process-orange);
-    font-size:13px;
+    color: #ff5100;
+    font-size:32px;
     letter-spacing:.25em;
     font-weight:700;
     margin-bottom:18px;
+    font-family: "Sanchez", serif;
 }
 
 .process-left h2{
@@ -47,10 +49,22 @@
     margin-bottom:18px;
 }
 
+.process-left h2 span{
+    color:#ff5100;
+    
+}
+
 .process-desc{
     color:var(--process-sub);
     line-height:1.8;
     margin-bottom:48px;
+    font-size: 24px;
+    font-weight: 600;
+}
+.process-desc span{
+    font-size: 28px;
+    font-weight: 700;
+    color: #555555;
 }
 
 .process-list{
@@ -146,11 +160,13 @@
 }
 
 .process-info h3{
-    font-size:24px;
+    font-size: 32px;
     color:var(--process-text);
-    margin:0 0 10px;
-}
+    margin:0 30px 10px;
 
+        font-family: "Sanchez", serif;
+    
+}
 
 
 
@@ -199,13 +215,15 @@ border-top:1px solid #ececec;
 
 .video-description h3{
 
-font-size:30px;
+font-size: 40px;
 
-margin-bottom:15px;
+margin-bottom:10px;
 
 font-weight:700;
 
-color:#111;
+color:#242424;
+
+border-bottom: 3px solid #F58220;
 
 }
 
@@ -219,7 +237,7 @@ color:#414040;
 
 max-width:580px;
 
-font-weight: 500;
+font-weight: 600;
 
 }
 

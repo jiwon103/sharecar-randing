@@ -1,85 +1,105 @@
-/* ==========================================================
+/* =========================================================
    REVIEW SECTION
-========================================================== */
+========================================================= */
 
 .review-section{
 
     position:relative;
 
-    padding:120px 0;
+    padding:80px 0;
+
+    background:#fff;
 
     overflow:hidden;
 
-    background-image: url("../assets/image/backgroundcar1.png");
+        background:
+        url("../assets/image/testbg3.png")
+        no-repeat
+        right center;
 
     background-size:cover;
+}
 
-    background-position:center;
+.review-section .container{
 
-    background-repeat:no-repeat;
+    width:min(1400px,92%);
+
+    margin:auto;
 
 }
+
+
+/* =========================================================
+   TITLE
+========================================================= */
 
 .review-title{
 
     text-align:center;
 
-    margin-bottom:60px;
+    margin-bottom:80px;
 
 }
 
 .review-title h4{
 
-    font-size:30px;
-
-    letter-spacing:6px;
-
-    color: #ff6b0a;
-
-    margin-bottom:12px;
-
-    font-weight:600;
-
-}
-
-.review-title span{
-
-    display:block;
-
-    font-size:42px;
+    font-size:20px;
 
     font-weight:700;
 
-    color:#fff;
+    letter-spacing:4px;
+
+    color:#F58220;
 
     margin-bottom:18px;
 
 }
 
+.review-title .real-review{
+
+    display:block;
+
+    font-size:48px;
+
+    font-weight:800;
+
+    color:#111;
+
+    margin-bottom:20px;
+
+}
+
 .review-title p{
 
-    font-size:24px;
+    font-size: 28px;
 
-    color:rgba(255,255,255,.75);
+    color:#000000;
 
     line-height:1.8;
+
+    font-weight: 700;
+
+}
+.review-title p span{
+    color: #ff7700;
+
+
 
 }
 
 
-/* ==========================================================
+/* =========================================================
    SLIDER
-========================================================== */
+========================================================= */
 
 .review-slider{
 
-    width:100%;
+    position:relative;
 
     overflow:hidden;
 
-    position:relative;
 
-    cursor: grabbing;
+    padding:0;
 
 }
 
@@ -87,46 +107,88 @@
 
     display:flex;
 
+    width: 100%;
+
     transition:transform .55s cubic-bezier(.22,.61,.36,1);
+
+    will-change:transform;
+
+    text-align: center;
+
+}
+.review-tag{
+    margin: 0 auto;
 
 }
 
 .review-page{
 
+    width:100%;
+
     min-width:100%;
+
+    flex-shrink:0;
+
+    box-sizing:border-box;
 
     display:grid;
 
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(3,minmax(0,1fr));
 
-    gap:24px;
+    gap:28px;
 
 }
 
 
-/* ==========================================================
+/* =========================================================
    CARD
-========================================================== */
+========================================================= */
 
 .review-card{
 
+    position:relative;
+
     background:#fff;
 
-    border-radius:24px;
+    border-radius:26px;
 
-    padding:36px 34px;
+    padding:46px;
 
-    min-height:240px;
+    min-height:470px;
+
+    border:1px solid #ececec;
+
+    overflow:hidden;
 
     display:flex;
 
     flex-direction:column;
 
-    justify-content:space-between;
+    transition:.35s;
 
     box-shadow:
 
-        0 12px 35px rgba(0,0,0,.06);
+        0 12px 35px rgba(0,0,0,.05);
+
+}
+
+
+/* 상단 오렌지 라인 */
+
+.review-card::before{
+
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:0;
+
+    height:4px;
+
+    background:#F58220;
 
     transition:.35s;
 
@@ -134,96 +196,281 @@
 
 .review-card:hover{
 
-    transform:translateY(-8px);
+    transform:translateY(-10px);
 
     box-shadow:
 
-        0 20px 50px rgba(0,0,0,.12);
+        0 24px 60px rgba(0,0,0,.10);
+
+}
+
+.review-card:hover::before{
+
+    width:100%;
 
 }
 
 
-/* ==========================================================
-   STAR
-========================================================== */
+/* =========================================================
+   TAG
+========================================================= */
 
-.review-star{
+.review-tag{
 
-    color:#C9A227;
+    display:inline-flex;
 
-    font-size:22px;
+    align-items:center;
 
-    letter-spacing:4px;
+    justify-content:center;
 
-}
+    height:38px;
 
+    padding:0 18px;
 
-/* ==========================================================
-   TEXT
-========================================================== */
+    width:fit-content;
 
-.review-text{
+    border-radius:100px;
 
-    margin:22px 0;
+    border:1px solid #F58220;
 
-    color:#333;
+    color:#F58220;
 
-    font-size:20px;
-
-    line-height:1.8;
-
-    font-weight: 700;
-
-
-    flex:1;
-
-}
-
-
-/* ==========================================================
-   FOOTER
-========================================================== */
-
-.review-footer{
-
-    border-top:1px solid #eee;
-
-    padding-top:18px;
-
-}
-
-.review-car{
-
-    font-size:18px;
+    font-size:14px;
 
     font-weight:700;
 
-    color:#111;
+    margin-bottom:34px;
 
 }
 
-.review-user{
 
-    margin-top:8px;
+/* =========================================================
+   QUOTE
+========================================================= */
 
-    font-size:15px;
+
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.review-card h3{
+
+    font-size:28px;
+
+    font-weight:800;
+
+    line-height:1.45;
+
+    color:#111;
+
+    margin-bottom:24px;
+
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.review-card p{
+
+    font-size:17px;
+
+    line-height:1.9;
 
     color:#777;
 
+    margin-bottom:22px;
+
 }
 
 
-/* ==========================================================
+/* =========================================================
+   HIGHLIGHT
+========================================================= */
+
+.review-card strong{
+
+    display:block;
+
+    color:#F58220;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    margin-bottom:36px;
+
+}
+
+/* =========================================================
+   USER
+========================================================= */
+
+.review-user{
+
+    margin-top:auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+
+    padding-top:28px;
+
+    border-top:1px solid #efefef;
+
+}
+
+.review-user strong{
+
+    margin:0;
+
+    color:#111;
+
+    font-size:17px;
+
+    font-weight:700;
+
+}
+
+.review-user span{
+
+    color:#888;
+
+    font-size:15px;
+
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.review-arrow{
+
+        content:"";
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:58px;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    cursor:pointer;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+    z-index:20;
+
+}
+
+.review-arrow:hover{
+
+    transform:translateY(-50%) scale(1.08);
+
+    background:#F58220;
+
+}
+
+
+.review-arrow.prev{
+
+    left: 0px;
+
+}
+
+.review-arrow.prev::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+
+    left:52%;
+
+    width:12px;
+
+    height:12px;
+
+    border-left:3px solid #F58220;
+
+    border-bottom:3px solid #F58220;
+
+    transform:translate(-50%,-50%) rotate(45deg);
+
+    transition:.3s;
+
+}
+
+.review-arrow.next{
+
+    right: 0px;
+
+}
+
+.review-arrow.next::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+
+    left:48%;
+
+    width:12px;
+
+    height:12px;
+
+    border-right:3px solid #F58220;
+
+    border-top:3px solid #F58220;
+
+    transform:translate(-50%,-50%) rotate(45deg);
+
+    transition:.3s;
+
+}
+
+.review-arrow:hover::before{
+
+    border-color:#fff;
+
+}
+
+
+
+
+/* =========================================================
    PAGINATION
-========================================================== */
+========================================================= */
 
 .review-pagination{
 
-    margin-top:45px;
+    margin-top:55px;
 
     display:flex;
 
     justify-content:center;
+
+    align-items:center;
 
     gap:12px;
 
@@ -237,11 +484,11 @@
 
     border-radius:50%;
 
-    background:#d6d6d6;
-
-    transition:.3s;
+    background:#ddd;
 
     cursor:pointer;
+
+    transition:.35s;
 
 }
 
@@ -249,110 +496,117 @@
 
     width:34px;
 
-    border-radius:20px;
+    border-radius:100px;
 
-    background:#111;
-
-}
-
-
-/* ==========================================================
-   BUTTON
-========================================================== */
-
-.review-prev,
-.review-next{
-
-    position:absolute;
-
-    top:50%;
-
-    transform:translateY(-50%);
-
-    width:48px;
-
-    height:48px;
-
-    border-radius:50%;
-
-    border:none;
-
-    background:#fff;
-
-    box-shadow:
-
-        0 8px 30px rgba(0,0,0,.12);
-
-    cursor:pointer;
-
-    transition:.3s;
-
-    z-index:20;
-
-}
-
-.review-prev{
-
-    left:-25px;
-
-}
-
-.review-next{
-
-    right:-25px;
-
-}
-
-.review-prev:hover,
-.review-next:hover{
-
-    transform:
-
-        translateY(-50%)
-
-        scale(1.08);
+    background:#F58220;
 
 }
 
 
-/* ==========================================================
-   TABLET
-========================================================== */
-
-@media(max-width:1024px){
-
-.review-page{
-
-    grid-template-columns:repeat(2,1fr);
-
-}
-
-}
-
-
-/* ==========================================================
-   MOBILE
-========================================================== */
-
-@media(max-width:768px){
-
-.review-page{
-
-    grid-template-columns:1fr;
-
-}
+/* =========================================================
+   ANIMATION
+========================================================= */
 
 .review-card{
 
-    min-height:auto;
+    opacity:0;
+
+    transform:translateY(20px);
+
+    animation:reviewFade .6s ease forwards;
 
 }
 
-.review-prev,
-.review-next{
+@keyframes reviewFade{
 
-    display:none;
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
 
 }
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1200px){
+
+    .review-page{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .review-card{
+
+        min-height:430px;
+
+    }
+
+}
+
+
+@media(max-width:768px){
+
+    .review-section{
+
+        padding:90px 0;
+
+    }
+
+    .review-title{
+
+        margin-bottom:55px;
+
+    }
+
+    .review-title span{
+
+        font-size:36px;
+
+    }
+
+    .review-title p{
+
+        font-size:16px;
+
+    }
+
+    .review-page{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .review-card{
+
+        min-height:auto;
+
+        padding:36px;
+
+    }
+
+    .review-card h3{
+
+        font-size:22px;
+
+    }
+
+    .review-card p{
+
+        font-size:16px;
+
+    }
+
+    .review-arrow{
+
+        display:none;
+
+    }
 
 }
